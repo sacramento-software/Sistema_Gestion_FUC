@@ -1,0 +1,99 @@
+.boton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-cuerpo);
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--radio-control);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background var(--dur-rapida) var(--ease-estandar),
+    color var(--dur-rapida) var(--ease-estandar);
+}
+
+.completo {
+  display: flex;
+  width: 100%;
+}
+
+.md {
+  height: 48px;
+  padding: 0 22px;
+  font-size: 16px;
+}
+
+.sm {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+/* El botón chico se ve de 40 px pero la zona táctil llega a 48 px. */
+.sm::before {
+  content: '';
+  position: absolute;
+  inset: -4px 0;
+}
+
+.primario {
+  background: var(--color-accion);
+  color: var(--color-accion-texto);
+}
+.primario:hover {
+  background: var(--color-accion-hover);
+  color: var(--color-accion-texto);
+}
+
+.secundario {
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  border-color: var(--color-texto);
+}
+.secundario:hover {
+  background: var(--color-superficie-2);
+  color: var(--color-texto);
+}
+
+.terciario {
+  background: transparent;
+  color: var(--color-enlace);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.terciario.md,
+.terciario.sm {
+  padding: 0 8px;
+}
+.terciario:hover {
+  color: var(--color-texto);
+}
+
+.peligro {
+  background: var(--color-superficie);
+  color: var(--color-peligro);
+  border-color: var(--color-peligro);
+}
+.peligro:hover {
+  background: var(--color-peligro-bg);
+  color: var(--color-peligro);
+}
+
+.boton:active {
+  filter: brightness(0.96);
+}
+
+.boton:disabled,
+.boton:disabled:hover {
+  background: var(--color-deshabilitado-bg);
+  color: var(--color-deshabilitado-fg);
+  border-color: transparent;
+  text-decoration: none;
+  cursor: not-allowed;
+  filter: none;
+}

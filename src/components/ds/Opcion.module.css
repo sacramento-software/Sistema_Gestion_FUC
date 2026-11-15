@@ -1,0 +1,93 @@
+/* Estilos compartidos por Checkbox y Radio. */
+.opcion {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 0;
+  color: var(--color-texto);
+  cursor: pointer;
+}
+
+.deshabilitada {
+  color: var(--color-deshabilitado-fg);
+  cursor: not-allowed;
+}
+
+.nativo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.marca {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--color-superficie);
+  border: 2px solid var(--color-borde-campo);
+}
+
+.casilla {
+  border-radius: var(--radio-etiqueta);
+}
+
+.circulo {
+  border-radius: 50%;
+}
+
+.tilde {
+  visibility: hidden;
+}
+
+.punto {
+  width: 10px;
+  height: 10px;
+  background: var(--color-accion);
+  border-radius: 50%;
+  visibility: hidden;
+}
+
+.nativo:checked + .casilla {
+  background: var(--color-accion);
+  border-color: var(--color-accion);
+}
+.nativo:checked + .casilla .tilde {
+  visibility: visible;
+}
+.nativo:checked + .circulo {
+  border-color: var(--color-accion);
+}
+.nativo:checked + .circulo .punto {
+  visibility: visible;
+}
+
+.nativo:focus-visible + .marca {
+  outline: 2px solid var(--color-foco);
+  outline-offset: 2px;
+}
+
+.nativo:disabled + .marca {
+  border-color: var(--color-deshabilitado-fg);
+}
+
+.textos {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.etiqueta {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.pista {
+  font-size: 14px;
+  color: var(--color-texto-sec);
+}

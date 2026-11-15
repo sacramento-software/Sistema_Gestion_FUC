@@ -1,0 +1,38 @@
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 8px;
+  font: 500 13px/1 var(--font-mono);
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--color-texto);
+  background: transparent;
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-etiqueta);
+}
+
+.interactivo {
+  height: 40px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+/* El chip se ve de 40 px; la zona táctil llega a 48 px. */
+.interactivo::before {
+  content: '';
+  position: absolute;
+  inset: -4px 0;
+}
+
+.interactivo:hover {
+  color: var(--color-texto);
+  background: var(--color-superficie-2);
+}
+
+.seleccionado,
+.seleccionado:hover {
+  background: var(--color-accion);
+  color: var(--color-accion-texto);
+  border-color: var(--color-accion);
+}

@@ -1,0 +1,20 @@
+.contenedor {
+  position: relative;
+  display: inline-flex;
+}
+
+.globo {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  z-index: 50;
+  padding: 6px 10px;
+  font-size: 13px;
+  line-height: 18px;
+  white-space: nowrap;
+  color: var(--niebla-100);
+  background: var(--marino-900);
+  border-radius: 8px;
+  box-shadow: var(--sombra-1);
+  transform: translateX(-50%);
+}

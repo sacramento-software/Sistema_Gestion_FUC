@@ -1,0 +1,8 @@
+.punto {
+  display: inline-block;
+  flex: none;
+  border-radius: 50%;
+  background: var(--color-peligro);
+  color: var(--color-peligro);
+  animation: fucLive 1.6s ease-out infinite;
+}

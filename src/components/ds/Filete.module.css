@@ -1,0 +1,13 @@
+.filete {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.uno {
+  height: 3px;
+  background: var(--color-filete-1);
+}
+.dos {
+  height: 3px;
+  background: var(--color-filete-2);
+}
