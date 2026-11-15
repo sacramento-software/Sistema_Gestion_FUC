@@ -1,0 +1,44 @@
+.formulario {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 900px) {
+  .formulario {
+    grid-template-columns: 2fr 1.5fr auto;
+  }
+}
+
+.boton {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .boton {
+    width: auto;
+  }
+}
+
+.contador {
+  margin: 16px 0;
+  font: 500 13px/1.2 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-texto-sec);
+}
+
+.paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.pagina {
+  font: 500 13px/1.2 var(--font-mono);
+  color: var(--color-texto-sec);
+}

@@ -1,0 +1,68 @@
+.articulo {
+  display: flex;
+  flex-direction: column;
+}
+
+.encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0 24px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin: 0;
+  font: 500 12px/1.2 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-texto-sec);
+}
+
+.titulo {
+  max-width: 24ch;
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.foto {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: var(--radio-foto);
+}
+
+.imagen {
+  object-fit: cover;
+}
+
+.cuerpo {
+  max-width: 68ch;
+  margin-top: 32px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--color-texto-cuerpo);
+}
+
+.cuerpo p {
+  margin: 0 0 1.2em;
+}
+
+.mas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 720px) {
+  .mas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

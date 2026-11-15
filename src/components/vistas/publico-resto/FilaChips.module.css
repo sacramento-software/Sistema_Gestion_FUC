@@ -1,0 +1,11 @@
+.fila {
+  display: flex;
+  gap: 8px;
+  padding: 4px 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.fila > * {
+  flex: none;
+}
