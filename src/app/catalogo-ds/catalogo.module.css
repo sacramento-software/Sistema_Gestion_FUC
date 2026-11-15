@@ -1,0 +1,48 @@
+.pagina {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px clamp(16px, 4vw, 48px) 96px;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.titulo {
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.seccion {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-linea);
+}
+
+.subtitulo {
+  margin: 0 0 16px;
+  font: 500 12px/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-texto-sec);
+}
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ancho {
+  width: 100%;
+}
+
+.tarjeta {
+  width: min(100%, 360px);
+}

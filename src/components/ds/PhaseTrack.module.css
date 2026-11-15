@@ -1,0 +1,52 @@
+.pista {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fase {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.barra {
+  height: 1px;
+  margin-top: 1px;
+  background: var(--color-linea);
+}
+.barraLlena {
+  background: var(--color-accion);
+}
+.barraActual {
+  height: 3px;
+  margin-top: 0;
+}
+
+.texto {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  padding-right: 8px;
+  min-width: 0;
+}
+
+.numero {
+  font: 500 12px/1 var(--font-mono);
+  color: var(--color-texto-sec);
+}
+
+.nombre {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-texto-sec);
+  overflow-wrap: anywhere;
+}
+.nombreLleno {
+  color: var(--color-texto);
+}
+.nombreActual {
+  font-weight: 700;
+}

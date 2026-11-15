@@ -1,0 +1,31 @@
+.boton {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  color: var(--color-texto);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.circulo {
+  display: flex;
+  justify-content: flex-start;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+.noche {
+  justify-content: flex-end;
+}
+
+.mitad {
+  width: 50%;
+  background: currentColor;
+}

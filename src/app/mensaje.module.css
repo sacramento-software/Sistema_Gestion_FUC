@@ -1,0 +1,21 @@
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 64px;
+  padding-bottom: 96px;
+}
+
+.titulo {
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.texto {
+  margin: 0 0 12px;
+  color: var(--color-texto-cuerpo);
+}

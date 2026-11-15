@@ -1,0 +1,96 @@
+.pie {
+  background: var(--marino-950);
+  color: var(--niebla-100);
+  border-top: 1px solid var(--marino-700);
+}
+
+.franja {
+  height: 4px;
+  background: var(--celeste-sello);
+}
+
+.interior {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  box-sizing: border-box;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 64px clamp(16px, 4vw, 48px) 28px;
+}
+
+.columnas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 40px;
+}
+
+.marca {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  grid-column: span 2;
+  min-width: 0;
+}
+
+@media (max-width: 520px) {
+  .marca {
+    grid-column: auto;
+  }
+}
+
+.sello {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.federacion {
+  font-family: var(--font-federacion);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: var(--blanco);
+}
+
+.direccion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--niebla-100);
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tituloColumna {
+  padding-bottom: 8px;
+  font: 700 18px/1 var(--font-deportiva);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blanco);
+}
+
+.enlace {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  font-size: 15px;
+  color: var(--niebla-300);
+  text-decoration: none;
+}
+.enlace:hover {
+  color: var(--blanco);
+}
+
+.base {
+  padding-top: 20px;
+  font-size: 14px;
+  color: var(--niebla-300);
+  border-top: 1px solid var(--marino-700);
+}
