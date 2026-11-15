@@ -1,0 +1,194 @@
+.portada {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: max(560px, 85vh);
+  overflow: hidden;
+  color: var(--blanco);
+  background: var(--marino-950);
+}
+
+.foto {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 900ms cubic-bezier(0.2, 0, 0, 1);
+}
+.fotoActual {
+  opacity: 1;
+}
+
+.degradadoLateral {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--marino-950) 94%, transparent) 0%,
+    color-mix(in srgb, var(--marino-950) 78%, transparent) 38%,
+    color-mix(in srgb, var(--marino-950) 35%, transparent) 72%,
+    color-mix(in srgb, var(--marino-950) 20%, transparent) 100%
+  );
+}
+.degradadoInferior {
+  position: absolute;
+  inset: auto 0 0;
+  height: 40%;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--marino-950) 0%, transparent), var(--marino-950));
+}
+
+.contenido {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 56px clamp(16px, 4vw, 48px) 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 24px);
+}
+.sello {
+  flex: none;
+  width: clamp(72px, 7.5vw, 112px);
+  height: clamp(72px, 7.5vw, 112px);
+  border-radius: 50%;
+}
+.linea {
+  align-self: stretch;
+  flex: none;
+  width: 1px;
+  background: var(--blanco);
+}
+.federacion {
+  font-family: var(--font-federacion);
+  font-size: clamp(18px, 2.1vw, 30px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.titulo {
+  margin: 0;
+  font: italic 700 clamp(42px, 5.6vw, 88px) / 0.9 var(--font-titulo);
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.bajada {
+  max-width: 54ch;
+  margin: 0;
+  font-family: var(--font-intro);
+  font-size: clamp(20px, 1.75vw, 24px);
+  line-height: 1.5;
+  color: var(--niebla-100);
+  text-wrap: pretty;
+}
+
+.accesos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 40px;
+  max-width: 700px;
+  padding-top: 8px;
+}
+.acceso {
+  display: flex;
+  flex: 1 1 260px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  padding: 18px 0;
+  color: var(--blanco);
+  text-decoration: none;
+  border-top: 1px solid rgb(255 255 255 / 0.4);
+  transition: color 120ms;
+}
+.acceso:hover {
+  color: var(--azul-200);
+}
+.textosAcceso {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rotuloAcceso {
+  font: 500 13px/1.2 var(--font-mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amarillo-sello);
+}
+.tituloAcceso {
+  font: italic 600 clamp(26px, 2.3vw, 32px) / 1 var(--font-titulo);
+}
+
+.controles {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: center;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 32px clamp(16px, 4vw, 48px) 20px;
+}
+.puntos {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.punto {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  min-width: 32px;
+  padding: 0 4px;
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+.barra {
+  display: block;
+  width: 22px;
+  height: 4px;
+  background: var(--niebla-500);
+  border-radius: 2px;
+  transition:
+    width 200ms cubic-bezier(0.2, 0, 0, 1),
+    background 120ms;
+}
+.barraActual {
+  width: 48px;
+  background: var(--blanco);
+}
+.pie {
+  font: 500 13px/1 var(--font-mono);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--niebla-300);
+}
+.espacio {
+  flex: 1;
+}
+.contador {
+  font: 500 14px/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.1em;
+  color: var(--niebla-100);
+}
+.flechas {
+  display: flex;
+  gap: 4px;
+}
