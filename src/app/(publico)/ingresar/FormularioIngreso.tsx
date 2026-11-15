@@ -26,7 +26,7 @@ export function FormularioIngreso() {
   const [atajo, setAtajo] = useState<Rol | null>(null);
   const [errorVisible, setErrorVisible] = useState(true);
   const formulario = useRef<HTMLFormElement>(null);
-  const enviarPendiente = useRef(false);
+  const [envios, setEnvios] = useState(0);
 
   // El `Input` del DS no expone `name`, `autoComplete` ni `autoCapitalize`: se completan acá sobre los
   // elementos reales, y los valores viajan en campos ocultos con `name`.
@@ -42,12 +42,10 @@ export function FormularioIngreso() {
   }, []);
 
   // Se envía después de que React aplicó los valores del atajo (los campos ocultos ya están al día).
+  // `envios` cambia en cada toque, aunque usuario y contraseña ya tuvieran esos valores.
   useEffect(() => {
-    if (enviarPendiente.current) {
-      enviarPendiente.current = false;
-      formulario.current?.requestSubmit();
-    }
-  }, [usuario, contrasena, atajo]);
+    if (envios > 0) formulario.current?.requestSubmit();
+  }, [envios]);
 
   const alEscribir = (campo: 'usuario' | 'contrasena', valor: string) => {
     if (campo === 'usuario') setUsuario(valor);
@@ -57,7 +55,7 @@ export function FormularioIngreso() {
   };
 
   const elegirAtajo = (rol: Rol) => {
-    enviarPendiente.current = true;
+    setEnvios((n) => n + 1);
     setUsuario(USUARIOS_DEMO[rol].usuario);
     setContrasena(CONTRASENA_DEMO);
     setAtajo(rol);
