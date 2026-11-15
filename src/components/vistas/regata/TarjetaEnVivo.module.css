@@ -1,0 +1,62 @@
+.tarjeta {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  color: var(--color-peligro-texto);
+  background: var(--estado-curso-bg);
+  border: 1px solid color-mix(in srgb, var(--estado-curso-fg) 40%, transparent);
+  border-radius: 16px;
+}
+
+.marca {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 12px;
+  color: var(--estado-curso-fg);
+}
+
+.enVivo {
+  font: 700 22px/1 var(--font-mono);
+  letter-spacing: 0.1em;
+}
+
+.cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.titulo {
+  font: 700 20px/1.2 var(--font-titulo);
+}
+
+.detalle {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.boton {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .tarjeta {
+    flex-direction: row;
+    gap: 14px 24px;
+    align-items: center;
+    padding: 16px 24px;
+  }
+  .boton {
+    width: auto;
+  }
+}

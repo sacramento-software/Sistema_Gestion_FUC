@@ -1,0 +1,188 @@
+.ficha {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+.identidad {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nombre {
+  margin: 0;
+  font: 700 clamp(32px, 4vw, 40px) / 1.05 var(--font-titulo);
+  text-wrap: balance;
+}
+
+.club {
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--color-texto-cuerpo);
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tripulacion {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 10px 0;
+  font-size: 16px;
+  line-height: 1.4;
+  border-top: 1px solid var(--color-linea);
+  border-bottom: 1px solid var(--color-linea);
+}
+
+.enlace {
+  display: inline-block;
+  padding: 10px 0;
+  font-weight: 600;
+  color: var(--color-accion);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-accion) 40%, transparent);
+  text-underline-offset: 4px;
+}
+
+.seccion {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo {
+  margin: 0;
+  padding-bottom: 10px;
+  font: 700 21px/1.15 var(--font-titulo);
+  border-bottom: 3px double var(--color-linea);
+}
+
+.fila,
+.filaFija {
+  box-sizing: border-box;
+  display: grid;
+  align-items: center;
+  min-height: 64px;
+  padding: 8px 0;
+  color: var(--color-texto);
+  text-decoration: none;
+  border-top: 1px solid var(--color-linea-suave);
+}
+.filaFija {
+  min-height: 72px;
+}
+a.fila:hover {
+  color: var(--color-texto);
+  background: var(--color-superficie-2);
+}
+
+.filaMejor {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-linea-suave);
+}
+
+.textos {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.etiqueta {
+  font: 600 14px/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.carrera {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.secundario {
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--color-texto-sec);
+}
+
+.encabezadoTabla {
+  display: grid;
+  padding: 12px 0 8px;
+  font: 500 12px/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-texto-sec);
+}
+
+.gridCarreras {
+  grid-template-columns: minmax(0, 1fr) 48px 84px;
+  gap: 0 12px;
+}
+
+.gridCampeonatos {
+  grid-template-columns: minmax(0, 1fr) 48px 52px;
+  gap: 0 12px;
+}
+
+.derecha {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+.encabezadoTabla .derecha {
+  display: block;
+}
+
+.posicion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 18px/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.apagado {
+  color: var(--color-texto-sec);
+}
+
+.estadoCampeonato {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+}
+
+.nota {
+  margin: 0;
+  padding-top: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-texto-sec);
+  border-top: 1px solid var(--color-linea-suave);
+}
+
+@media (min-width: 1024px) {
+  .pagina {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 28px 56px;
+  }
+  .pagina .nombre {
+    font-size: 52px;
+  }
+}

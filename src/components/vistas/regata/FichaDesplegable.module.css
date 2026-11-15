@@ -1,0 +1,86 @@
+.velo {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--color-overlay);
+}
+
+/* Celular: hoja inferior que deja ver 48 px de la página arriba. */
+.panel {
+  position: fixed;
+  top: 48px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--color-texto);
+  background: var(--color-superficie);
+  border-radius: 16px 16px 0 0;
+  box-shadow: var(--sombra-2);
+}
+.panel:focus {
+  outline: none;
+}
+
+.cabecera {
+  flex: none;
+  border-bottom: 1px solid var(--color-linea);
+}
+
+.tirador {
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+.tirador span {
+  width: 40px;
+  height: 4px;
+  background: var(--color-borde-campo);
+  border-radius: 999px;
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  min-height: 64px;
+  box-sizing: border-box;
+  padding: 8px 16px;
+}
+
+.cuerpo {
+  flex: 1;
+  min-height: 0;
+  padding: 20px 16px 32px;
+  overflow-y: auto;
+}
+
+/* Escritorio: panel lateral de 480 px bajo el encabezado. */
+@media (min-width: 1024px) {
+  .panel {
+    top: 77px;
+    left: auto;
+    width: 480px;
+    border-radius: 0;
+  }
+  .tirador {
+    display: none;
+  }
+  .acciones {
+    padding: 8px 24px;
+  }
+  .cuerpo {
+    padding: 24px 28px 40px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .panel {
+    top: 89px;
+  }
+}
