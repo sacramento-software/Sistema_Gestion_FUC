@@ -1,0 +1,21 @@
+.portada {
+  padding-top: 64px;
+  padding-bottom: 96px;
+}
+
+.titulo {
+  margin: 0 0 16px;
+  font-family: var(--font-titulo);
+  font-size: clamp(34px, 6vw, 56px);
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.bajada {
+  max-width: 44ch;
+  margin: 0;
+  font-family: var(--font-intro);
+  font-size: clamp(20px, 1.75vw, 24px);
+  line-height: 1.4;
+  color: var(--color-texto-cuerpo);
+}
