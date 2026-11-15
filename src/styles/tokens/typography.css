@@ -1,0 +1,27 @@
+/* FUC · Tipografía */
+:root {
+  --font-titulo: 'Source Serif 4', Georgia, serif;
+  --font-cuerpo: 'Public Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --peso-regular: 400; /* @kind font */
+  --peso-medio: 500; /* @kind font */
+  --peso-semi: 600; /* @kind font */
+  --peso-bold: 700; /* @kind font */
+
+  /* Escala: tamaño / interlínea */
+  --text-display: 56px;   --lh-display: 60px;
+  --text-h1: 40px;        --lh-h1: 44px;
+  --text-h2: 28px;        --lh-h2: 34px;
+  --text-h3: 20px;        --lh-h3: 26px;
+  --text-cuerpo-l: 18px;  --lh-cuerpo-l: 28px;
+  --text-cuerpo: 16px;    --lh-cuerpo: 24px;
+  --text-nota: 14px;      --lh-nota: 20px;
+  --text-etiqueta: 12px;  --tracking-etiqueta: 0.1em;
+
+  /* Tiempos (siempre mono + tabular) */
+  --text-tiempo-xl: 48px;
+  --text-tiempo-l: 28px;
+  --text-tiempo-m: 18px;
+  --numeros-tiempo: tabular-nums; /* @kind font */
+}
