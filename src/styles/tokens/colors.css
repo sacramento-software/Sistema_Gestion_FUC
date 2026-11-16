@@ -14,9 +14,9 @@
   --azul-200: #A6CFF4;
   /* Base: marca (solo gráfico) */
   --celeste-sello: #4C9BD3;
-  /* Azul celeste profundo para botones de alta y detalle (texto blanco) */
-  --celeste-boton: #1F6FB0;
-  --celeste-boton-hover: #185C93;
+  /* Azul opaco para botones de alta y detalle (texto blanco) */
+  --celeste-boton: #33608F;
+  --celeste-boton-hover: #274E76;
   --amarillo-sello: #E8B320;
   /* Base: neutros */
   --blanco: #FFFFFF;
