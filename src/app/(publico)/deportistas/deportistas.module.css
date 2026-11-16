@@ -24,10 +24,10 @@
 
 .contador {
   margin: 16px 0;
-  font: 500 13px/1.2 var(--font-mono);
-  letter-spacing: 0.06em;
+  font: 700 13px/1.2 var(--font-cuerpo);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-texto-sec);
+  color: var(--color-texto);
 }
 
 .paginacion {

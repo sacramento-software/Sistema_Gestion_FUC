@@ -30,10 +30,10 @@
 }
 
 .rotulo {
-  font: 500 12px/1 var(--font-mono);
-  letter-spacing: 0.06em;
+  font: 700 12px/1 var(--font-cuerpo);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-texto-sec);
+  color: var(--color-texto);
 }
 
 .nombre {
