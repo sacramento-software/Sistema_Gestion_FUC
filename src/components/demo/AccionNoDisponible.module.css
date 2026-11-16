@@ -56,22 +56,22 @@
 
 /* Altas y «Ver detalles»: se ven activos (celeste) aunque no hagan nada; el aviso sale al tocarlos. */
 .primario {
-  color: var(--marino-950);
-  background: var(--celeste-sello);
+  color: var(--blanco);
+  background: var(--celeste-boton);
   cursor: pointer;
 }
 .primario:hover {
-  background: color-mix(in srgb, var(--celeste-sello) 82%, var(--blanco));
+  background: var(--celeste-boton-hover);
 }
 
 .secundario {
-  color: var(--color-accion);
-  background: color-mix(in srgb, var(--celeste-sello) 14%, transparent);
-  border-color: var(--celeste-sello);
+  color: var(--celeste-boton);
+  background: transparent;
+  border-color: var(--celeste-boton);
   cursor: pointer;
 }
 .secundario:hover {
-  background: color-mix(in srgb, var(--celeste-sello) 28%, transparent);
+  background: color-mix(in srgb, var(--celeste-boton) 12%, transparent);
 }
 
 .terciario {
