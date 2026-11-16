@@ -10,7 +10,7 @@ export interface EncabezadoPanelProps {
 /** Banda de título de cada vista del panel. Ocupa el ancho completo del `main`. */
 export function EncabezadoPanel({ titulo, subtitulo, acciones }: EncabezadoPanelProps) {
   return (
-    <div className={estilos.banda}>
+    <div className={estilos.banda} data-ancho-completo>
       <div className={estilos.textos}>
         <h1 className={estilos.titulo}>{titulo}</h1>
         {subtitulo && <span className={estilos.subtitulo}>{subtitulo}</span>}
