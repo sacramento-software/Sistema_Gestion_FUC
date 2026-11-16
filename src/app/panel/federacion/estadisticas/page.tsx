@@ -38,16 +38,19 @@ export default function EstadisticasPage() {
 
         <div className={estilos.graficos}>
           <GraficoBarras
+            verDetalles
             titulo="Participación por categoría"
             datos={participacionPorCategoria().map((c) => ({ etiqueta: c.nombre, valor: c.deportistas }))}
             nota="Deportistas distintos que compitieron en la temporada."
           />
           <GraficoBarras
+            verDetalles
             titulo="Participación por club"
             datos={botesPorClub().map((c) => ({ etiqueta: c.nombre, valor: c.botes }))}
             nota="Botes inscriptos en la temporada."
           />
           <GraficoBarras
+            verDetalles
             titulo="Deportistas por sexo"
             datos={[
               { etiqueta: 'Femenino', valor: sexo.femenino },
@@ -55,6 +58,7 @@ export default function EstadisticasPage() {
             ]}
           />
           <GraficoBarras
+            verDetalles
             titulo="Evolución de inscriptos por temporada"
             datos={evolucion}
             nota="Botes inscriptos en cada temporada."

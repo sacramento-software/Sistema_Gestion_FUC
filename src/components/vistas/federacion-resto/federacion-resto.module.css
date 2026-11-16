@@ -50,6 +50,12 @@
   padding: 0 20px 20px;
 }
 
+.pieTarjeta {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px 16px;
+}
+
 .nota {
   margin: 0;
   padding: 12px 20px;
