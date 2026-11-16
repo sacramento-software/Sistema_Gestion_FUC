@@ -29,7 +29,8 @@
 .tarjeta {
   min-width: 0;
   overflow: hidden;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
@@ -41,11 +42,14 @@
   align-items: baseline;
   gap: 4px 12px;
   padding: 16px 20px;
+  border-bottom: 2px solid var(--celeste-sello);
 }
 
 .tarjetaTitulo {
   margin: 0;
-  font: 700 21px/1.15 var(--font-titulo);
+  font: 700 17px/1.15 var(--font-titulo);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .tarjetaCuerpo {
@@ -140,7 +144,8 @@
   gap: 6px;
   min-width: 0;
   padding: 16px;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
@@ -327,7 +332,8 @@ a.filaTabla:hover {
 .evento {
   min-width: 0;
   overflow: hidden;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
@@ -376,6 +382,9 @@ a.filaTabla:hover {
   border-top: 1px solid var(--color-linea-suave);
   font-size: 15px;
 }
+.faseFila:hover {
+  background: var(--color-fila-hover);
+}
 
 .faseTitulo {
   font-weight: 600;
@@ -396,6 +405,9 @@ a.filaTabla:hover {
   padding: 10px 20px;
   border-top: 1px solid var(--color-linea-suave);
   justify-content: center;
+}
+.boteFila:hover {
+  background: var(--color-fila-hover);
 }
 
 .totales {
@@ -423,6 +435,9 @@ a.filaTabla:hover {
   box-sizing: border-box;
   padding: 10px 20px;
   border-top: 1px solid var(--color-linea-suave);
+}
+.resultadoFila:hover {
+  background: var(--color-fila-hover);
 }
 
 .posicion {

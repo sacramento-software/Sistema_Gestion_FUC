@@ -47,6 +47,9 @@
   border-top: 1px solid var(--color-linea);
   border-bottom: 1px solid var(--color-linea);
 }
+.tripulacion:hover {
+  background: var(--color-fila-hover);
+}
 
 .enlace {
   display: inline-block;
@@ -81,6 +84,9 @@
   text-decoration: none;
   border-top: 1px solid var(--color-linea-suave);
 }
+.filaFija:hover {
+  background: var(--color-fila-hover);
+}
 .filaFija {
   min-height: 72px;
 }
@@ -94,6 +100,9 @@ a.fila:hover {
   gap: 4px 16px;
   padding: 14px 0;
   border-bottom: 1px solid var(--color-linea-suave);
+}
+.filaMejor:hover {
+  background: var(--color-fila-hover);
 }
 
 .textos {

@@ -176,6 +176,12 @@
   padding: var(--panel-padding);
 }
 
+/* El contenido del panel no se estira en pantallas anchas: las tarjetas y listas quedan de un ancho legible. */
+.principal > * {
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
 .velo {
   position: fixed;
   inset: 0;

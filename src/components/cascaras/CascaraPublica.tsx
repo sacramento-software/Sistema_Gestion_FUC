@@ -11,10 +11,12 @@ import estilos from './CascaraPublica.module.css';
 export interface CascaraPublicaProps {
   usuario: UsuarioDemo | null;
   hayEnVivo: boolean;
+  /** Ruta de la serie en vivo, para marcar «En vivo» en el menú cuando se está en ella. */
+  rutaEnVivo?: string | null;
   children?: ReactNode;
 }
 
-export async function CascaraPublica({ usuario, hayEnVivo, children }: CascaraPublicaProps) {
+export async function CascaraPublica({ usuario, hayEnVivo, rutaEnVivo = null, children }: CascaraPublicaProps) {
   const tema = await leerTema();
   return (
     <div className={estilos.raiz} data-theme={tema} data-envolvente-tema>
@@ -22,7 +24,7 @@ export async function CascaraPublica({ usuario, hayEnVivo, children }: CascaraPu
         <div className={estilos.franja} />
         <div className={estilos.fila}>
           <BloqueLogo href={rutas.inicio()} etiqueta="Federación Uruguaya de Canotaje, inicio" corte="publico" />
-          <NavEscritorio hayEnVivo={hayEnVivo} />
+          <NavEscritorio hayEnVivo={hayEnVivo} rutaEnVivo={rutaEnVivo} />
           <div className={estilos.acciones}>
             <SelectorTema temaInicial={tema} />
             <BotonSesion inicioPanel={usuario ? usuario.inicio : null} />
@@ -31,7 +33,7 @@ export async function CascaraPublica({ usuario, hayEnVivo, children }: CascaraPu
       </header>
       <main className={estilos.principal}>{children}</main>
       <PiePublico />
-      <NavInferior hayEnVivo={hayEnVivo} />
+      <NavInferior hayEnVivo={hayEnVivo} rutaEnVivo={rutaEnVivo} />
     </div>
   );
 }

@@ -23,7 +23,8 @@
 .tarjeta {
   min-width: 0;
   overflow: hidden;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
@@ -35,11 +36,14 @@
   justify-content: space-between;
   gap: 8px 12px;
   padding: 16px 20px 12px;
+  border-bottom: 2px solid var(--celeste-sello);
 }
 
 .tarjetaTitulo {
   margin: 0;
-  font: 700 22px/1.15 var(--font-titulo);
+  font: 700 17px/1.15 var(--font-titulo);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .tarjetaCuerpo {
@@ -78,7 +82,8 @@
   gap: 6px;
   min-width: 0;
   padding: 16px;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
@@ -204,6 +209,9 @@
   box-sizing: border-box;
   padding: 8px 20px;
   border-top: 1px solid var(--color-linea-suave);
+}
+.fila:hover {
+  background: var(--color-fila-hover);
 }
 .filaTexto {
   display: flex;

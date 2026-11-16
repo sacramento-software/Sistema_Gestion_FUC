@@ -23,7 +23,8 @@
 .tarjeta {
   min-width: 0;
   overflow: hidden;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
@@ -42,6 +43,7 @@
   align-items: baseline;
   gap: 4px 12px;
   padding: 16px 20px;
+  border-bottom: 2px solid var(--celeste-sello);
 }
 
 .titulo {
@@ -52,7 +54,9 @@
 
 .tituloMenor {
   margin: 0;
-  font: 700 20px/1.2 var(--font-titulo);
+  font: 700 17px/1.2 var(--font-titulo);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .fila2 {
@@ -156,6 +160,9 @@
   gap: 8px 16px;
   padding: 12px 20px;
   border-top: 1px solid var(--color-linea-suave);
+}
+.itemLista:hover {
+  background: var(--color-fila-hover);
 }
 
 .itemTextos {
@@ -334,6 +341,13 @@
   gap: 12px;
 }
 
+.altaFiltros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: auto;
+}
+
 .buscador {
   display: flex;
   flex: 1 1 280px;
@@ -405,6 +419,9 @@
   padding: 12px 20px;
   border-top: 1px solid var(--color-linea-suave);
   border-left: 3px solid transparent;
+}
+.filaDeportista:hover {
+  background: var(--color-fila-hover);
 }
 .filaVencida {
   border-left-color: var(--color-peligro);

@@ -4,7 +4,8 @@
   overflow: hidden;
   color: var(--color-texto);
   text-decoration: none;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }

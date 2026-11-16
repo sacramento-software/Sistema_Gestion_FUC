@@ -83,14 +83,6 @@ export default async function DeportistasDelegadoPage({
       <EncabezadoPanel
         titulo="Mis deportistas"
         subtitulo={`${club?.nombre ?? 'Mi club'} · ${plantel.length} deportistas`}
-        acciones={
-          <>
-            <AccionNoDisponible icon={UserPlus}>Agregar deportista</AccionNoDisponible>
-            <AccionNoDisponible variant="secundario" icon={FileUp}>
-              Importar planilla
-            </AccionNoDisponible>
-          </>
-        }
       />
       <Pagina>
         {vencidos > 0 && ficha === 'todas' && !q && (
@@ -136,6 +128,12 @@ export default async function DeportistasDelegadoPage({
               </Link>
             ))}
           </nav>
+          <div className={estilos.altaFiltros}>
+            <AccionNoDisponible icon={UserPlus}>Agregar deportista</AccionNoDisponible>
+            <AccionNoDisponible variant="secundario" icon={FileUp}>
+              Importar planilla
+            </AccionNoDisponible>
+          </div>
         </div>
 
         <Tarjeta etiquetaAria="Deportistas del club">

@@ -34,7 +34,7 @@
   --medalla-bronce: #A7663A;
 
   /* Semánticos — claro */
-  --color-fondo: var(--gris-50);
+  --color-fondo: #E3E8EF;
   --color-superficie: var(--blanco);
   --color-superficie-2: var(--gris-100);
   --color-texto: var(--marino-900);
@@ -55,7 +55,12 @@
   --color-overlay: rgba(11, 23, 38, 0.6);
   --color-filete-1: var(--azul-600);
   --color-filete-2: var(--celeste-sello);
-  --color-hero-bg: #E4EEF8;
+  --color-hero-bg: #D9E5F1;
+  /* Tarjetas: blanco translúcido con sombra; banda de título; fila en hover */
+  --color-tarjeta: rgba(255, 255, 255, 0.72);
+  --color-tarjeta-banda: #D3DDE9;
+  --color-fila-hover: rgba(11, 74, 133, 0.09);
+  --sombra-tarjeta: 0 1px 2px rgba(15, 34, 54, 0.06), 0 8px 20px -8px rgba(15, 34, 54, 0.16);
 
   --color-exito: #1B6B3F;
   --color-exito-bg: #E2F2E8;
@@ -98,6 +103,10 @@
   --color-filete-1: var(--azul-300);
   --color-filete-2: var(--celeste-sello);
   --color-hero-bg: var(--marino-850);
+  --color-tarjeta: rgba(255, 255, 255, 0.05);
+  --color-tarjeta-banda: rgba(255, 255, 255, 0.11);
+  --color-fila-hover: rgba(255, 255, 255, 0.08);
+  --sombra-tarjeta: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 20px -8px rgba(0, 0, 0, 0.5);
 
   --color-exito: #8FDCAF;
   --color-exito-bg: #143A27;

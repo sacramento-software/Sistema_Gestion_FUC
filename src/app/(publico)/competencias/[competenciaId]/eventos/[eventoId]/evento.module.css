@@ -47,7 +47,8 @@
 
 .fase {
   padding: 20px;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }

@@ -1,6 +1,7 @@
 .tabla {
   overflow: hidden;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   color: var(--color-texto);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
@@ -16,18 +17,21 @@
   justify-content: space-between;
   gap: 12px;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--color-linea);
+  border-bottom: 2px solid var(--celeste-sello);
 }
 .cabeceraCompacta {
+  background: none;
   padding: 12px 0;
 }
 
 .titulo {
   margin: 0;
   font-family: var(--font-titulo);
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .tituloCompacto {
   font-size: 18px;
@@ -53,6 +57,9 @@
   padding: 14px 20px;
   font-size: 16px;
   border-bottom: 1px solid var(--color-linea-suave);
+}
+.datos:hover {
+  background: var(--color-fila-hover);
 }
 
 .resaltada {

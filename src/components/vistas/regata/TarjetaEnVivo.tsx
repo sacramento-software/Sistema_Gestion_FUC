@@ -10,7 +10,7 @@ export function TarjetaEnVivo({ serie, conCompetencia = false }: { serie: SerieD
   return (
     <section aria-label="Serie en vivo" className={estilos.tarjeta}>
       <span className={estilos.marca}>
-        <PuntoEnVivo tamano={14} />
+        <PuntoEnVivo tamano={9} />
         <span className={estilos.enVivo}>EN VIVO</span>
       </span>
       <div className={estilos.cuerpo}>

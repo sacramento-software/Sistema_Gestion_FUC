@@ -4,13 +4,20 @@
   overflow: hidden;
   color: var(--color-texto);
   text-decoration: none;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
 
 .tarjeta:hover {
   background: var(--color-superficie-2);
+}
+
+.interior {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .foto {
@@ -21,6 +28,7 @@
 
 .imagen {
   object-fit: cover;
+  object-position: center 30%;
 }
 
 .cuerpo {
@@ -64,7 +72,7 @@
 }
 
 @media (min-width: 900px) {
-  .destacada {
+  .destacada .interior {
     flex-direction: row;
   }
 

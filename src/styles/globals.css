@@ -7,7 +7,8 @@
 :root {
   --font-cuerpo: var(--fuente-public-sans), system-ui, sans-serif;
   --font-mono: var(--fuente-plex-mono), ui-monospace, monospace;
-  --font-titulo: var(--fuente-cormorant), Georgia, serif;
+  --font-titulo: var(--fuente-source-serif), Georgia, serif;
+  --font-logo: var(--fuente-cormorant), Georgia, serif;
   --font-deportiva: var(--fuente-barlow), sans-serif;
   --font-intro: var(--fuente-eb-garamond), Georgia, serif;
   --font-federacion: var(--fuente-bodoni), Georgia, serif;

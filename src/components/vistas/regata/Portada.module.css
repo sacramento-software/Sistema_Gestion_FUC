@@ -78,7 +78,7 @@
 
 .titulo {
   margin: 0;
-  font: italic 700 clamp(42px, 5.6vw, 88px) / 0.9 var(--font-titulo);
+  font: italic 700 clamp(42px, 5.6vw, 88px) / 0.9 var(--font-logo);
   letter-spacing: -0.005em;
   text-transform: uppercase;
   text-wrap: balance;
@@ -129,7 +129,7 @@
   color: var(--amarillo-sello);
 }
 .tituloAcceso {
-  font: italic 600 clamp(26px, 2.3vw, 32px) / 1 var(--font-titulo);
+  font: italic 600 clamp(26px, 2.3vw, 32px) / 1 var(--font-logo);
 }
 
 .controles {
