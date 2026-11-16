@@ -118,6 +118,13 @@
 .barra {
   color: var(--celeste-sello);
 }
+/* La regla global de movimiento reducido apaga toda animación; muchos celulares la tienen activa.
+   La cinta es lenta y decorativa, así que sigue corriendo. */
+@media (prefers-reduced-motion: reduce) {
+  .pista {
+    animation: desplazarCinta 70s linear infinite !important;
+  }
+}
 @keyframes desplazarCinta {
   to {
     transform: translateX(-50%);
