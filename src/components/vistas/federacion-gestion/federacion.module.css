@@ -543,33 +543,22 @@ a.filaTabla:hover {
   }
 }
 
-/* Solo el tablero: más sombra en las tarjetas y las métricas de arriba reaccionan al pasar el mouse. */
-.tablero .tarjeta,
-.tablero .metrica {
-  box-shadow:
-    0 2px 4px rgba(15, 34, 54, 0.08),
-    0 14px 28px -10px rgba(15, 34, 54, 0.28);
-}
-
-.tablero .metrica {
+/* Tarjeta suelta: al pasar el mouse sube y cambia de color. */
+.metrica {
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
     background-color 0.18s ease,
     border-color 0.18s ease;
 }
-
-.tablero .metrica:hover {
-  background: color-mix(in srgb, var(--celeste-sello) 22%, var(--color-superficie));
+.metrica:hover {
+  background: var(--color-tarjeta-hover);
   border-color: var(--celeste-sello);
-  box-shadow:
-    0 4px 8px rgba(15, 34, 54, 0.12),
-    0 22px 36px -12px rgba(15, 34, 54, 0.4);
+  box-shadow: var(--sombra-tarjeta-hover);
   transform: translateY(-5px);
 }
-
 @media (prefers-reduced-motion: reduce) {
-  .tablero .metrica:hover {
+  .metrica:hover {
     transform: none;
   }
 }
