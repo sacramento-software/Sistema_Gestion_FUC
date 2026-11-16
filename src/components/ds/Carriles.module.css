@@ -1,0 +1,41 @@
+.carriles {
+  padding: 12px 0;
+}
+.noche {
+  background: var(--marino-950);
+  --carriles-numero: var(--niebla-300);
+  --carriles-numero-activo: var(--niebla-100);
+  --carriles-linea: var(--marino-700);
+}
+.claro {
+  background: var(--color-superficie);
+  --carriles-numero: var(--color-texto-sec);
+  --carriles-numero-activo: var(--color-texto);
+  --carriles-linea: var(--color-linea);
+}
+
+.carril {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 20px;
+}
+
+.numero {
+  width: 16px;
+  font: 500 13px/1 var(--font-mono);
+  color: var(--carriles-numero);
+}
+.numeroActivo {
+  color: var(--carriles-numero-activo);
+}
+
+.linea {
+  flex: 1;
+  height: 1px;
+  background: var(--carriles-linea);
+}
+.lineaActiva {
+  height: 3px;
+  background: var(--celeste-sello);
+}

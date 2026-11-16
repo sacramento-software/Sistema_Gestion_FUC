@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(npm ci)",
+      "Bash(npm install *)",
+      "Bash(npx playwright *)",
+      "Bash(git *)",
+      "Bash(gh pr *)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git reset --hard*)",
+      "Bash(npm audit fix --force*)",
+      "Bash(vercel *)"
+    ]
+  }
+}

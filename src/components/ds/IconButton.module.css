@@ -1,0 +1,33 @@
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radio-control);
+  background: transparent;
+  color: var(--color-texto);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--dur-rapida) var(--ease-estandar);
+}
+
+.borde {
+  background: var(--color-superficie);
+  border-color: var(--color-linea);
+}
+
+.boton:hover {
+  background: var(--color-superficie-2);
+  color: var(--color-texto);
+}
+
+.boton:disabled,
+.boton:disabled:hover {
+  background: transparent;
+  color: var(--color-deshabilitado-fg);
+  cursor: not-allowed;
+}

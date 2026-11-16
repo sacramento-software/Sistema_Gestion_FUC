@@ -1,0 +1,47 @@
+.boton {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 48px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 22px;
+  padding: 2px;
+  background: #8b93a0;
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+.activa {
+  background: #4f8fd6;
+}
+
+.perilla {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: #3d4654;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.15s ease;
+}
+.activa .perilla {
+  color: #1d3f78;
+  transform: translateX(18px);
+}
+
+.boton:focus-visible .barra {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

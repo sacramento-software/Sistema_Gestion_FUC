@@ -1,0 +1,83 @@
+.pie {
+  background: var(--marino-950);
+  color: var(--niebla-100);
+  border-top: 1px solid var(--marino-700);
+}
+
+.franja {
+  height: 4px;
+  background: var(--celeste-sello);
+}
+
+.interior {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 20px clamp(16px, 4vw, 48px) 14px;
+}
+
+.columnas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 32px;
+}
+
+.marca {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.sello {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.federacion {
+  font-family: var(--font-federacion);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: var(--blanco);
+}
+
+.direccion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--niebla-100);
+}
+
+.enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+}
+
+.enlace {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  font-size: 15px;
+  color: var(--niebla-300);
+  text-decoration: none;
+}
+.enlace:hover {
+  color: var(--blanco);
+}
+
+.base {
+  padding-top: 10px;
+  font-size: 13px;
+  color: var(--niebla-300);
+  border-top: 1px solid var(--marino-700);
+}

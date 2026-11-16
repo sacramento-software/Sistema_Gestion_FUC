@@ -1,0 +1,61 @@
+.aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  color: var(--color-texto);
+  background: var(--toast-fondo);
+  border-radius: var(--radio-control);
+}
+
+.exito {
+  --toast-fondo: var(--color-exito-bg);
+  --toast-color: var(--color-exito);
+}
+.error {
+  --toast-fondo: var(--color-peligro-bg);
+  --toast-color: var(--color-peligro);
+}
+.info {
+  --toast-fondo: var(--color-info-bg);
+  --toast-color: var(--color-info);
+}
+
+.icono {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--toast-color);
+  border-radius: 50%;
+}
+
+.texto {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+/* Botón de 32 px con margen negativo, como el bundle; la zona táctil llega a 48 px. */
+.cerrar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: -4px;
+  padding: 0;
+  color: var(--color-texto-sec);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.cerrar::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+}

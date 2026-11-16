@@ -1,0 +1,41 @@
+.logo {
+  display: inline-flex;
+}
+
+.imagen {
+  display: block;
+  flex: none;
+}
+
+.circulo {
+  border-radius: 50%;
+}
+
+.firma {
+  align-items: center;
+  color: var(--color-texto);
+}
+
+.separador {
+  width: 1px;
+  align-self: stretch;
+  background: var(--color-linea);
+}
+
+.textos {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sigla {
+  font-family: var(--font-logo);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.nombre {
+  letter-spacing: 0.04em;
+  color: var(--color-texto-sec);
+  white-space: nowrap;
+}

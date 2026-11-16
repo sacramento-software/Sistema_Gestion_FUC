@@ -1,0 +1,37 @@
+.insignia {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  padding: 4px 10px;
+  font-family: var(--font-cuerpo);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  white-space: nowrap;
+  border-radius: var(--radio-etiqueta);
+}
+
+.punto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.abiertas {
+  background: var(--estado-abiertas-bg);
+  color: var(--estado-abiertas-fg);
+}
+.cerradas {
+  background: var(--estado-cerradas-bg);
+  color: var(--estado-cerradas-fg);
+}
+.curso {
+  background: var(--estado-curso-bg);
+  color: var(--estado-curso-fg);
+}
+.finalizada {
+  background: var(--estado-finalizada-bg);
+  color: var(--estado-finalizada-fg);
+}

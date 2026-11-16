@@ -1,0 +1,39 @@
+.tarjeta {
+  display: block;
+  overflow: hidden;
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+  color: var(--color-texto);
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-tarjeta);
+  text-decoration: none;
+  transition: border-color var(--dur-rapida) var(--ease-estandar);
+}
+
+.interactiva {
+  cursor: pointer;
+}
+.interactiva:hover {
+  color: var(--color-texto);
+  border-color: var(--color-borde-campo);
+}
+
+/* Tarjeta suelta: al pasar el mouse sube y cambia de color. */
+.interactiva {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+.interactiva:hover {
+  background: var(--color-tarjeta-hover);
+  border-color: var(--celeste-sello);
+  box-shadow: var(--sombra-tarjeta-hover);
+  transform: translateY(-5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .interactiva:hover {
+    transform: none;
+  }
+}

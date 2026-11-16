@@ -1,0 +1,229 @@
+.encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0 28px;
+}
+
+.titulo {
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin: 0;
+  color: var(--color-texto-cuerpo);
+}
+
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.fases {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+@media (min-width: 900px) {
+  .fases {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.fase {
+  padding: 20px;
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-tarjeta);
+}
+
+.faseTitulo {
+  margin: 0 0 4px;
+  font-family: var(--font-titulo);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.faseHora {
+  margin: 0 0 12px;
+  font: 500 13px/1.4 var(--font-mono);
+  color: var(--color-texto-sec);
+}
+
+.avance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  font-size: 15px;
+  color: var(--color-texto-cuerpo);
+}
+
+.prevista {
+  margin: 0;
+  padding: 16px;
+  color: var(--color-texto-cuerpo);
+  background: var(--color-superficie-2);
+  border-radius: 12px;
+}
+
+.series {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.serie {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 14px;
+  color: var(--color-texto);
+  text-decoration: none;
+  border: 1px solid var(--color-linea);
+  border-radius: 12px;
+}
+
+.serie:hover {
+  background: var(--color-superficie-2);
+}
+
+.serieCabecera {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+}
+
+.serieTexto {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.podio {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-linea-suave);
+}
+.podio:hover {
+  background: var(--color-fila-hover);
+}
+
+.puesto {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.puesto + .puesto {
+  border-top: 1px solid var(--color-linea-suave);
+}
+
+.posicion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 15px/1 var(--font-mono);
+}
+
+.medalla {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radio-circulo);
+}
+
+.puestoTexto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.puestoDatos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.tiempo {
+  font: 600 15px/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.clubes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .clubes {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.club {
+  padding: 16px 20px;
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-tarjeta);
+}
+
+.clubNombre {
+  margin: 0 0 8px;
+  font-family: var(--font-titulo);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.botes {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  min-height: 48px;
+  padding: 8px 0;
+}
+
+.bote + .bote {
+  border-top: 1px solid var(--color-linea-suave);
+}

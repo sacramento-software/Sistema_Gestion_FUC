@@ -1,0 +1,640 @@
+/* Estilos de la gestión de la Federación (spec 7). Mobile primero; las tablas pasan a listas en celular. */
+
+.pagina {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.etiqueta {
+  font: 700 12px/1.2 var(--font-cuerpo);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-texto);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.subtexto {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-texto-sec);
+}
+
+/* Tarjeta con filete doble */
+.tarjeta {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-tarjeta);
+}
+
+.tarjetaCabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 16px 20px;
+  border-bottom: 2px solid var(--celeste-sello);
+}
+
+.tarjetaTitulo {
+  margin: 0;
+  font: 700 17px/1.15 var(--font-titulo);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tarjetaCuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 20px 20px;
+}
+
+.nota {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-texto-sec);
+}
+
+.pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--color-linea);
+  background: var(--color-superficie-2);
+}
+
+/* Bandas de aviso */
+.banda {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 14px 18px;
+  border: 1px solid;
+  border-radius: var(--radio-tarjeta);
+}
+
+.bandaVivo {
+  background: var(--estado-curso-bg);
+  color: var(--color-peligro-texto);
+  border-color: color-mix(in srgb, var(--estado-curso-fg) 40%, transparent);
+}
+
+.bandaInfo {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  border-color: color-mix(in srgb, var(--color-info) 30%, transparent);
+}
+
+.bandaRotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 15px/1.3 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bandaTexto {
+  flex: 1 1 240px;
+  min-width: 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.bandaEnlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+
+.enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 48px;
+  font-size: 15px;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+/* Métricas */
+.metricas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.metrica {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 16px;
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-tarjeta);
+}
+
+.metricaValor {
+  font: 700 30px/1.1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.metricaUnidad {
+  font-size: 14px;
+  color: var(--color-texto-sec);
+}
+
+/* Dos columnas en escritorio */
+.columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* Listas */
+.lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filaEnlace {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-top: 1px solid var(--color-linea-suave);
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+.filaEnlace:hover {
+  background: var(--color-superficie-2);
+  color: var(--color-texto);
+}
+
+.filaTextos {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.filaTitulo {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.chevron {
+  flex: none;
+  color: var(--color-texto-sec);
+}
+
+/* Barras por evento */
+.barras {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.barraFila {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 36px;
+  gap: 4px 12px;
+  align-items: center;
+}
+
+.barraTexto {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.barra {
+  display: flex;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-linea);
+}
+
+.barraRelleno {
+  background: var(--color-accion);
+}
+
+.cierre {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 18px/1.3 var(--font-titulo);
+  color: var(--color-accion);
+}
+
+/* Tabla que pasa a lista en celular */
+.encabezadoTabla {
+  display: none;
+}
+
+.filaTabla {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-sizing: border-box;
+  min-height: 56px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--color-linea-suave);
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+a.filaTabla:hover {
+  background: var(--color-superficie-2);
+  color: var(--color-texto);
+}
+
+.celda {
+  min-width: 0;
+  font-size: 15px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.celdaRotulo {
+  margin-right: 6px;
+  font: 700 12px/1.2 var(--font-cuerpo);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-texto);
+}
+
+/* Chips de filtro */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.grupoFiltro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vacio {
+  padding: 28px 20px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--color-texto-sec);
+}
+
+/* Línea de etapas */
+.etapas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 20px 20px;
+}
+
+.etapasAccion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+/* Programa, inscripciones, series */
+.evento {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-tarjeta);
+}
+
+.eventoCabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 14px 20px;
+}
+
+.eventoTextos {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.codigo {
+  font: 500 12px/1.2 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--color-texto-sec);
+}
+
+.eventoTitulo {
+  margin: 0;
+  font: 700 19px/1.2 var(--font-titulo);
+}
+
+.accionesIcono {
+  display: flex;
+  gap: 4px;
+}
+
+.faseFila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  min-height: 56px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-top: 1px solid var(--color-linea-suave);
+  font-size: 15px;
+}
+.faseFila:hover {
+  background: var(--color-fila-hover);
+}
+
+.faseTitulo {
+  font-weight: 600;
+}
+
+.grupoClub {
+  padding: 10px 20px 4px;
+  border-top: 1px solid var(--color-linea-suave);
+  background: var(--color-superficie-2);
+}
+
+.boteFila {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 56px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-top: 1px solid var(--color-linea-suave);
+  justify-content: center;
+}
+.boteFila:hover {
+  background: var(--color-fila-hover);
+}
+
+.totales {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  align-items: flex-end;
+}
+
+.formularioFiltro {
+  max-width: 360px;
+}
+
+.pestanas {
+  min-width: 0;
+}
+
+/* Resultados */
+.resultadoFila {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 4px 12px;
+  align-items: center;
+  min-height: 56px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-top: 1px solid var(--color-linea-suave);
+}
+.resultadoFila:hover {
+  background: var(--color-fila-hover);
+}
+
+.posicion {
+  font: 600 18px/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.resultadoExtra {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px 12px;
+  font-size: 14px;
+}
+
+/* Configuración */
+.campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.regla {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 0;
+  border-top: 1px solid var(--color-linea-suave);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* Estado de catálogo */
+.chipEstado {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.chipActivo {
+  background: var(--color-exito-bg);
+  color: var(--color-exito);
+}
+
+.chipInactivo {
+  background: var(--color-superficie-2);
+  color: var(--color-texto-sec);
+  border: 1px solid var(--color-linea);
+}
+
+@media (min-width: 900px) {
+  .metricas {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .columnas {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+
+  .encabezadoTabla {
+    display: grid;
+    align-items: center;
+    gap: 8px 16px;
+    padding: 10px 20px;
+    border-top: 1px solid var(--color-linea);
+    border-bottom: 1px solid var(--color-linea);
+    font: 700 17px/1 var(--font-titulo);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-texto);
+  }
+
+  .filaTabla {
+    display: grid;
+    align-items: center;
+    gap: 8px 16px;
+    min-height: 60px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .celdaRotulo {
+    display: none;
+  }
+
+  /* Columnas de cada tabla */
+  .tablaCompetencias {
+    grid-template-columns: minmax(0, 3.2fr) minmax(0, 1.6fr) minmax(0, 1.4fr) 96px minmax(0, 1.6fr) minmax(0, 1.4fr);
+  }
+
+  .tablaCatalogo {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 2.4fr) minmax(0, 1.2fr) 110px 56px;
+  }
+
+  /* Encabezado en la tipografía de los títulos, en negrita y con más aire (catálogo y competencias). */
+  .tablaCatalogo,
+  .tablaCompetencias {
+    column-gap: 32px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .encabezadoTabla.tablaCatalogo,
+  .encabezadoTabla.tablaCompetencias {
+    padding-top: 22px;
+    padding-bottom: 22px;
+    font: 700 17px/1 var(--font-titulo);
+    letter-spacing: 0.1em;
+  }
+  .filaTabla.tablaCatalogo,
+  .filaTabla.tablaCompetencias {
+    min-height: 76px;
+  }
+}
+
+/* Tabla de competencias: filas bien definidas, sombra propia y línea de color bajo el encabezado. */
+.tarjetaTabla {
+  overflow: hidden;
+  border: 1px solid var(--color-linea);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(15, 34, 54, 0.06),
+    0 12px 32px -8px rgba(20, 40, 75, 0.22);
+}
+
+.tarjetaTabla .filaTabla {
+  border-top: 1px solid var(--color-linea);
+  box-shadow: inset 3px 0 0 transparent;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.tarjetaTabla .filaTabla:nth-of-type(even) {
+  background: var(--color-fila-par);
+}
+.tarjetaTabla .filaTabla:hover {
+  background: color-mix(in srgb, var(--celeste-sello) 10%, var(--color-superficie));
+  box-shadow: inset 3px 0 0 var(--celeste-boton);
+}
+
+@media (min-width: 900px) {
+  .tarjetaTabla .encabezadoTabla {
+    border-top: 0;
+    border-bottom: 3px solid var(--celeste-boton);
+    background: color-mix(in srgb, var(--celeste-sello) 9%, var(--color-superficie));
+  }
+}
+
+@media (max-width: 899px) {
+  .campos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Tarjeta suelta: al pasar el mouse sube y cambia de color. */
+.metrica {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+.metrica:hover {
+  background: var(--color-tarjeta-hover);
+  border-color: var(--celeste-sello);
+  box-shadow: var(--sombra-tarjeta-hover);
+  transform: translateY(-5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .metrica:hover {
+    transform: none;
+  }
+}
+
+.filaTabla:hover {
+  background: var(--color-fila-hover);
+}
+
+/* Franja alterna en todas las filas de tabla. */
+.filaTabla:nth-child(even):not(:hover),
+.faseFila:nth-child(even):not(:hover),
+.boteFila:nth-child(even):not(:hover),
+.resultadoFila:nth-child(even):not(:hover) {
+  background: var(--color-fila-par);
+}
+
+/* Encabezado de columnas: texto siempre centrado */
+.encabezadoTabla {
+  text-align: center;
+  justify-items: center;
+}
+.encabezadoTabla > *,
+.encabezadoTabla > .derecha {
+  text-align: center;
+  justify-self: center;
+  justify-content: center;
+}

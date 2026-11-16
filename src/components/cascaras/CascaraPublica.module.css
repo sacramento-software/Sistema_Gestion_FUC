@@ -1,0 +1,67 @@
+.raiz {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Deja espacio para que la navegación inferior (celular y tableta) no tape el pie. */
+  padding-bottom: calc(64px + env(safe-area-inset-bottom));
+}
+
+.encabezado {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  flex: none;
+  color: var(--color-texto);
+  background: color-mix(in srgb, var(--color-superficie) 78%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-linea);
+}
+
+/* Modo claro: encabezado más transparente. */
+:global(:root:not([data-theme="noche"])) .encabezado {
+  background: color-mix(in srgb, var(--color-superficie) 45%, transparent);
+}
+
+.franja {
+  height: 4px;
+  background: var(--celeste-sello);
+}
+
+.fila {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 72px;
+  padding: 0 8px 0 0;
+}
+
+/* En celular el logo empuja al selector de tema y al enlace de sesión hacia la derecha. */
+.acciones {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.principal {
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (min-width: 1100px) {
+  .raiz {
+    padding-bottom: 0;
+  }
+  .fila {
+    height: 84px;
+    gap: 16px;
+    padding: 0 24px 0 0;
+  }
+  .acciones {
+    gap: 12px;
+  }
+}

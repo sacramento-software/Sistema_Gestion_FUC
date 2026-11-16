@@ -1,0 +1,30 @@
+@import "./tokens/colors.css";
+@import "./tokens/noche-mate.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/base.css";
+
+:root {
+  --font-cuerpo: var(--fuente-public-sans), system-ui, sans-serif;
+  /* Antes monoespaciada; ahora la del cuerpo, con cifras tabulares para que los tiempos sigan alineados. */
+  --font-mono: var(--fuente-public-sans), system-ui, sans-serif;
+  --font-titulo: var(--fuente-source-serif), Georgia, serif;
+  --font-logo: var(--fuente-cormorant), Georgia, serif;
+  --font-deportiva: var(--fuente-barlow), sans-serif;
+  --font-intro: var(--fuente-eb-garamond), Georgia, serif;
+  --font-federacion: var(--fuente-bodoni), Georgia, serif;
+}
+
+body {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes fucLive {
+  0% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+  70% { box-shadow: 0 0 0 8px transparent; opacity: .85; }
+  100% { box-shadow: 0 0 0 0 transparent; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

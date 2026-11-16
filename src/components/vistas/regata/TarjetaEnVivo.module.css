@@ -1,0 +1,72 @@
+.tarjeta {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 20px;
+  color: var(--color-texto);
+  background: var(--color-tarjeta);
+  border: 1px solid var(--color-linea);
+  border-left: 4px solid var(--estado-curso-fg);
+  border-radius: var(--radio-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.marca {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 5px 12px 5px 10px;
+  color: var(--estado-curso-fg);
+  background: var(--estado-curso-bg);
+  border-radius: 999px;
+}
+
+.enVivo {
+  font: 700 12px/1 var(--font-cuerpo);
+  letter-spacing: 0.12em;
+}
+
+.cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.titulo {
+  font: 700 20px/1.2 var(--font-titulo);
+}
+
+.detalle {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-texto-sec);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.boton {
+  align-self: flex-start;
+}
+
+@media (min-width: 768px) {
+  .tarjeta {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .marca {
+    align-self: center;
+  }
+  .boton {
+    align-self: center;
+  }
+}

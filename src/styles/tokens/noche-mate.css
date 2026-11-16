@@ -1,0 +1,38 @@
+/* FUC · Modo noche mate (paleta de Home Deportivo).
+   Aplica al modo noche de cada vista o maqueta. Las bandas marino forzadas
+   dentro del modo claro (pie, barra lateral) conservan el azul de marca. */
+html[data-theme="noche"],
+body [data-theme="noche"]:not(body [data-theme="claro"] *) {
+  --marino-950: #0F1216;
+  --marino-900: #14181D;
+  --marino-850: #191E24;
+  --marino-800: #20262D;
+  --marino-700: #2C333C;
+  --azul-300: #93A9BF;
+  --azul-200: #B4C3D2;
+  --celeste-sello: #6F8BA5;
+  --amarillo-sello: #C9A54E;
+  --niebla-100: #E7EAEE;
+  --niebla-300: #A2ABB5;
+  --niebla-500: #5F6873;
+
+  --color-texto-cuerpo: #C5CBD2;
+  --color-deshabilitado-bg: #262B31;
+  --color-deshabilitado-fg: #8A929B;
+  --color-exito: #9FD3B4;
+  --color-exito-bg: #1A2E24;
+  --color-peligro: #F0A89E;
+  --color-peligro-bg: #3A201D;
+  --color-peligro-texto: #F6D2CC;
+  --color-info: #B4C3D2;
+  --color-info-bg: #222932;
+
+  --estado-abiertas-bg: #1A2E24;
+  --estado-abiertas-fg: #9FD3B4;
+  --estado-cerradas-bg: #262B31;
+  --estado-cerradas-fg: #B9BFC6;
+  --estado-curso-bg: #3A201D;
+  --estado-curso-fg: #F0A89E;
+  --estado-finalizada-bg: #222932;
+  --estado-finalizada-fg: #B4C3D2;
+}

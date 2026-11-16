@@ -1,0 +1,497 @@
+.pagina {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 16px;
+  padding-bottom: 40px;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px 24px;
+}
+
+.titulos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.h1 {
+  margin: 0;
+  font: 700 clamp(32px, 4vw, 46px) / 1.08 var(--font-titulo);
+  text-wrap: balance;
+}
+
+.subtitulo {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* En celular el estado va arriba del título. */
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  order: -1;
+}
+
+.banda {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid;
+  border-radius: 16px;
+}
+
+.bandaNeutra {
+  color: var(--color-texto);
+  background: var(--color-superficie);
+  border-color: var(--color-linea);
+}
+.bandaVivo {
+  color: var(--color-peligro-texto);
+  background: var(--estado-curso-bg);
+  border-color: color-mix(in srgb, var(--estado-curso-fg) 40%, transparent);
+}
+.bandaInfo {
+  color: var(--color-info);
+  background: var(--color-info-bg);
+  border-color: color-mix(in srgb, var(--color-info) 30%, transparent);
+}
+/* Éxito sobrio: fondo de tarjeta, filete verde a la izquierda y texto neutro. */
+.bandaExito {
+  color: var(--color-texto);
+  background: var(--color-tarjeta);
+  border-color: var(--color-linea);
+  border-left: 4px solid var(--color-exito);
+}
+.bandaExito .descripcion {
+  color: var(--color-texto-sec);
+}
+
+.iconoBanda,
+.iconoVivo {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+.iconoBanda {
+  border-radius: 12px;
+}
+.iconoNeutro {
+  background: var(--color-superficie-2);
+}
+.iconoInfo {
+  background: color-mix(in srgb, var(--color-info) 14%, transparent);
+}
+.iconoExito {
+  width: 32px;
+  height: 32px;
+  color: var(--color-exito);
+  background: transparent;
+}
+.iconoVivo {
+  color: var(--estado-curso-fg);
+}
+
+.textosBanda {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.horaGrande {
+  font: 600 28px/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.enVivo {
+  font: 700 11px/1 var(--font-cuerpo);
+  letter-spacing: 0.14em;
+}
+
+/* Banda «En vivo» sobria: fondo de tarjeta, filete rojo y píldora chica con el punto. */
+.bandaVivo {
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  padding: 10px 16px;
+  color: var(--color-texto);
+  background: var(--color-tarjeta);
+  border-color: var(--color-linea);
+  border-left: 3px solid var(--estado-curso-fg);
+  border-radius: 10px;
+}
+.marcaVivo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px 5px 9px;
+  color: var(--estado-curso-fg);
+  background: var(--estado-curso-bg);
+  border-radius: 999px;
+}
+.textoVivo {
+  flex: 1 1 240px;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-texto-sec);
+}
+
+.tituloBanda {
+  font: 700 18px/1.2 var(--font-cuerpo);
+}
+
+.descripcion {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.cabeceraSeccion {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 2px solid var(--celeste-sello);
+}
+
+.encabezadoTabla {
+  display: none;
+  padding: 12px 24px;
+  font: 700 17px/1 var(--font-titulo);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-texto);
+  border-top: 1px solid var(--color-linea);
+  border-bottom: 1px solid var(--color-linea);
+}
+
+/* Carriles: celular con número, nombre y club debajo. */
+.fila {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-areas:
+    'num nombre'
+    'num club';
+  gap: 0 14px;
+  align-items: center;
+  min-height: 72px;
+  padding: 6px 16px;
+  border-top: 1px solid var(--color-linea-suave);
+}
+.fila:hover {
+  background: var(--color-fila-hover);
+}
+
+.numero {
+  grid-area: num;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  font: 600 20px/1 var(--font-mono);
+  border: 1px solid var(--color-linea);
+  border-radius: 10px;
+}
+
+.nombre {
+  grid-area: nombre;
+  align-self: end;
+  min-width: 0;
+}
+
+.club {
+  grid-area: club;
+  align-self: start;
+  margin-top: -8px;
+  padding-bottom: 6px;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-texto-sec);
+}
+
+.etiquetaBote {
+  display: none;
+}
+
+.seleccionada {
+  background: color-mix(in srgb, var(--color-accion) 10%, var(--color-superficie));
+  box-shadow: inset 3px 0 0 var(--color-accion);
+}
+
+.nota {
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-texto-sec);
+  border-top: 1px solid var(--color-linea);
+}
+
+.avance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-texto);
+  border-top: 1px solid var(--color-linea);
+}
+
+/* Resultados: celular con posición, nombre y tiempo; segunda línea con carril y estado. */
+.filaResultado {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  grid-template-areas:
+    'pos nombre tiempo'
+    '. meta meta';
+  gap: 0 12px;
+  align-items: center;
+  padding: 8px 16px 12px;
+  border-top: 1px solid var(--color-linea-suave);
+}
+.filaResultado:hover {
+  background: var(--color-fila-hover);
+}
+
+.clasificado {
+  background: color-mix(in srgb, var(--color-exito-bg) 45%, var(--color-superficie));
+}
+.ultimoClasificado {
+  border-bottom: 2px solid var(--color-exito);
+}
+.clasificado.seleccionada {
+  background: color-mix(in srgb, var(--color-accion) 10%, var(--color-superficie));
+}
+
+.posicion {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font: 600 22px/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.apagado {
+  color: var(--color-texto-sec);
+}
+
+.aPos {
+  grid-area: pos;
+}
+.aCarril {
+  grid-area: carril;
+}
+.aNombre {
+  grid-area: nombre;
+}
+.aTiempo {
+  grid-area: tiempo;
+}
+.aPuntos {
+  grid-area: pts;
+}
+.aPildora {
+  grid-area: pildora;
+}
+
+.carrilEscritorio {
+  display: none;
+  font: 500 16px/1 var(--font-mono);
+  color: var(--color-texto-sec);
+}
+
+.nombreResultado {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.clubResultado {
+  margin-top: -8px;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-texto-sec);
+}
+
+.tiempo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.meta {
+  grid-area: meta;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  padding-top: 6px;
+}
+.carrilCelular {
+  font: 500 14px/1 var(--font-mono);
+  color: var(--color-texto-sec);
+}
+.puntos {
+  font: 600 14px/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.pildora {
+  white-space: nowrap;
+}
+
+.pie {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 16px 16px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-texto-sec);
+  border-top: 1px solid var(--color-linea);
+}
+
+.cajaCodigo {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  color: var(--color-peligro-texto);
+  background: var(--color-peligro-bg);
+  border-radius: 10px;
+}
+.iconoCaja {
+  padding-top: 1px;
+  color: var(--color-peligro);
+}
+
+@media (min-width: 768px) {
+  .pagina {
+    gap: 24px;
+    padding-top: 32px;
+    padding-bottom: 56px;
+  }
+
+  .titulo {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .acciones {
+    order: 1;
+  }
+
+  .cabeceraSeccion {
+    padding: 16px 24px;
+  }
+  .encabezadoTabla {
+    display: grid;
+  }
+
+  .gridCarriles.encabezadoTabla,
+  .fila {
+    grid-template-columns: 88px minmax(0, 1.3fr) minmax(0, 1fr) 80px;
+    grid-template-areas: 'num nombre club bote';
+    gap: 0 16px;
+  }
+  .fila {
+    min-height: 60px;
+    padding: 4px 24px;
+  }
+  .nombre {
+    align-self: center;
+  }
+  .club {
+    align-self: center;
+    margin-top: 0;
+    padding-bottom: 0;
+    font-size: 15px;
+    color: var(--color-texto-cuerpo);
+  }
+  .etiquetaBote {
+    display: flex;
+    grid-area: bote;
+  }
+  .avance {
+    padding: 12px 24px;
+  }
+  .nota {
+    padding: 14px 24px;
+  }
+
+  .gridResultados,
+  .gridResultadosPuntos {
+    grid-template-columns: 64px 80px minmax(0, 1fr) 130px 190px;
+    grid-template-areas: 'pos carril nombre tiempo pildora';
+    gap: 0 20px;
+  }
+  .gridResultadosPuntos {
+    grid-template-columns: 64px 80px minmax(0, 1fr) 130px 80px 150px;
+    grid-template-areas: 'pos carril nombre tiempo pts pildora';
+  }
+  .aPuntos {
+    justify-self: end;
+    text-align: right;
+  }
+  /* Los integrantes de un bote fluyen en línea y no uno por renglón. */
+  .nombreResultado :global(a) {
+    min-height: 32px;
+  }
+  .clubResultado {
+    margin-top: 0;
+  }
+  .encabezadoResultados {
+    grid-template-rows: auto;
+  }
+  .aTiempo.tiempo,
+  .encabezadoResultados .aTiempo {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  .filaResultado {
+    min-height: 72px;
+    padding: 6px 24px;
+  }
+  .carrilEscritorio {
+    display: block;
+  }
+  .carrilCelular {
+    display: none;
+  }
+  .meta {
+    display: contents;
+  }
+  .pie {
+    padding: 28px 24px 16px;
+  }
+}
+
+/* Franja alterna en las filas de tabla. */
+.fila:nth-child(even):not(:hover):not(.seleccionada),
+.filaResultado:nth-child(even):not(:hover):not(.clasificado) {
+  background: var(--color-fila-par);
+}
+
+/* Encabezado de columnas: texto siempre centrado */
+.encabezadoTabla {
+  text-align: center;
+  justify-items: center;
+}
+.encabezadoTabla > *,
+.encabezadoTabla > .derecha {
+  text-align: center;
+  justify-self: center;
+  justify-content: center;
+}
