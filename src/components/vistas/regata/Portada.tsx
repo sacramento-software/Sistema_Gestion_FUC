@@ -69,6 +69,7 @@ export function Portada({ proxima, resultados }: PortadaProps) {
           fill
           priority={i === 0}
           sizes="100vw"
+          quality={95}
           className={cx(estilos.foto, i === actual && estilos.fotoActual)}
           style={{ objectPosition: foto.posicion }}
         />
