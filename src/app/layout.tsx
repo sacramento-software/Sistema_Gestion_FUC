@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { leerTema } from '@/lib/tema';
 import { clasesFuentes } from './fuentes';
 import '@/styles/globals.css';
@@ -15,7 +16,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const tema = await leerTema();
   return (
     <html lang="es-UY" data-theme={tema} className={clasesFuentes}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
