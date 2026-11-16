@@ -87,7 +87,7 @@ export function Tablero() {
   const todas = listarCompetencias();
 
   return (
-    <div className={estilos.pagina}>
+    <div className={`${estilos.pagina} ${estilos.tablero}`}>
       {enCurso && vivo && (
         <BandaEnVivo
           serie={vivo}
