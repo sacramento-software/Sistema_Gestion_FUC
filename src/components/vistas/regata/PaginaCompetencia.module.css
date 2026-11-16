@@ -148,6 +148,9 @@
   text-decoration: none;
   border-top: 1px solid var(--color-linea-suave);
 }
+.filaPrograma:hover {
+  background: var(--color-fila-hover);
+}
 .enlaceFila:hover {
   color: var(--color-texto);
   background: var(--color-superficie-2);
@@ -225,6 +228,9 @@
   padding: 4px 0;
   border-top: 1px solid var(--color-linea-suave);
 }
+.filaPodio:hover {
+  background: var(--color-fila-hover);
+}
 .filaPodio.conPuntos {
   grid-template-columns: 40px minmax(0, 1fr) auto 36px;
 }
@@ -251,10 +257,10 @@
   font-variant-numeric: tabular-nums;
 }
 .unidadPuntos {
-  font: 500 12px/1 var(--font-mono);
-  letter-spacing: 0.1em;
+  font: 700 12px/1 var(--font-cuerpo);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-texto-sec);
+  color: var(--color-texto);
 }
 
 .notaPie {
@@ -270,7 +276,8 @@
   align-items: center;
   gap: 16px;
   padding: 20px 16px;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: 16px;
 }
@@ -367,4 +374,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
   }
+}
+
+/* Franja alterna en las filas de tabla. */
+.filaPrograma:nth-child(even):not(:hover),
+.filaPodio:nth-child(even):not(:hover) {
+  background: var(--color-fila-par);
 }

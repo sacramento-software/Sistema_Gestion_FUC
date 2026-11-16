@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { CircleCheck, ExternalLink, Hourglass } from 'lucide-react';
 import { EstadoSerieBadge, Filete, Icon } from '@/components/ds';
 import type { SerieDetalle } from '@/datos';
 import { rutas } from '@/lib/rutas';
@@ -18,13 +18,19 @@ function resumenDe(serie: SerieDetalle): string {
   return `${filas.filter((f) => f.tiempo).length} llegaron`;
 }
 
-function Grupo({ titulo, series }: { titulo: string; series: SerieDetalle[] }) {
+function Grupo({ titulo, series, tono }: { titulo: string; series: SerieDetalle[]; tono: 'revision' | 'publicada' }) {
   if (series.length === 0) return null;
   return (
-    <section aria-label={titulo} className={estilos.tarjeta}>
+    <section aria-label={titulo} className={`${estilos.tarjeta} ${tono === 'revision' ? disposicion.grupoRevision : disposicion.grupoPublicada}`}>
       <Filete />
-      <div className={estilos.tarjetaCabecera}>
+      <div className={`${estilos.tarjetaCabecera} ${disposicion.grupoCabecera}`}>
+        <span className={disposicion.grupoIcono}>
+          <Icon icono={tono === 'revision' ? Hourglass : CircleCheck} size={22} />
+        </span>
         <h3 className={disposicion.grupoTitulo}>{titulo}</h3>
+        <span className={disposicion.grupoCuenta}>
+          {series.length} {series.length === 1 ? 'serie' : 'series'}
+        </span>
       </div>
       <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
         {series.map((s) => (
@@ -61,8 +67,8 @@ export function ListaResultados({ series }: { series: SerieDetalle[] }) {
   }
   return (
     <div className={estilos.pagina}>
-      <Grupo titulo="En revisión" series={enRevision} />
-      <Grupo titulo="Publicadas" series={publicadas} />
+      <Grupo titulo="En revisión" series={enRevision} tono="revision" />
+      <Grupo titulo="Publicadas" series={publicadas} tono="publicada" />
     </div>
   );
 }

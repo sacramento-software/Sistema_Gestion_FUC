@@ -131,7 +131,7 @@ export function DetalleClub({ club, plantel }: { club: ClubVista; plantel: boole
           ))}
         </ul>
         <div className={estilos.pie}>
-          <AccionNoDisponible variant="secundario" icon={UserPlus}>
+          <AccionNoDisponible icon={UserPlus}>
             Agregar delegado
           </AccionNoDisponible>
         </div>

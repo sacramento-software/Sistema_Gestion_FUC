@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Filete } from '@/components/ds';
+import { AccionNoDisponible } from '@/components/demo';
 import estilos from './federacion-resto.module.css';
 
 export function Etiqueta({ children }: { children: ReactNode }) {
@@ -11,18 +12,25 @@ interface TarjetaProps {
   meta?: ReactNode;
   /** Nivel del título (2 por defecto; 3 dentro de una sección con h2). */
   nivel?: 2 | 3;
+  /** Acciones arriba a la derecha (por ejemplo, «Editar»). */
+  acciones?: ReactNode;
   children: ReactNode;
 }
 
 /** Tarjeta con borde, radio de tarjeta y filete doble. */
-export function Tarjeta({ titulo, meta, nivel = 2, children }: TarjetaProps) {
+export function Tarjeta({ titulo, meta, nivel = 2, acciones, children }: TarjetaProps) {
   const Titulo = nivel === 2 ? 'h2' : 'h3';
   return (
     <section aria-label={titulo} className={estilos.tarjeta}>
       <Filete />
       <div className={estilos.tarjetaCabecera}>
         <Titulo className={estilos.tarjetaTitulo}>{titulo}</Titulo>
-        {meta && <Etiqueta>{meta}</Etiqueta>}
+        {(meta || acciones) && (
+          <div className={estilos.tarjetaLado}>
+            {meta && <Etiqueta>{meta}</Etiqueta>}
+            {acciones}
+          </div>
+        )}
       </div>
       {children}
     </section>
@@ -62,7 +70,17 @@ export interface DatoBarra {
  * Gráfico de barras horizontales hecho con CSS. El valor queda visible en cada barra, así que el gráfico
  * se lee como una lista etiqueta-valor sin depender del color ni del ancho.
  */
-export function GraficoBarras({ titulo, datos, nota }: { titulo: string; datos: DatoBarra[]; nota?: string }) {
+export function GraficoBarras({
+  titulo,
+  datos,
+  nota,
+  verDetalles = false,
+}: {
+  titulo: string;
+  datos: DatoBarra[];
+  nota?: string;
+  verDetalles?: boolean;
+}) {
   const maximo = Math.max(1, ...datos.map((d) => d.valor));
   return (
     <Tarjeta titulo={titulo} nivel={3}>
@@ -80,6 +98,11 @@ export function GraficoBarras({ titulo, datos, nota }: { titulo: string; datos: 
         </ul>
       </div>
       {nota && <p className={estilos.nota}>{nota}</p>}
+      {verDetalles && (
+        <div className={estilos.pieTarjeta}>
+          <AccionNoDisponible size="sm">Ver detalles</AccionNoDisponible>
+        </div>
+      )}
     </Tarjeta>
   );
 }

@@ -1,0 +1,70 @@
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.formulario {
+  display: flex;
+  flex: 1 1 360px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.campo {
+  position: relative;
+  display: block;
+  flex: 1 1 220px;
+  min-width: 0;
+  max-width: 420px;
+}
+
+.icono {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  display: flex;
+  color: var(--color-texto-sec);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.entrada,
+.selector {
+  box-sizing: border-box;
+  height: 48px;
+  font: 400 16px/1 var(--font-cuerpo);
+  color: var(--color-texto);
+  background: var(--color-tarjeta);
+  border: 1px solid var(--color-borde-campo);
+  border-radius: var(--radio-control);
+}
+
+.entrada {
+  width: 100%;
+  padding: 0 14px 0 40px;
+}
+
+.selector {
+  flex: 0 1 auto;
+  max-width: 100%;
+  padding: 0 12px;
+}
+
+.entrada:focus-visible,
+.selector:focus-visible {
+  outline: 2px solid var(--color-foco);
+  outline-offset: 2px;
+}
+
+.alta {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  gap: 8px;
+}

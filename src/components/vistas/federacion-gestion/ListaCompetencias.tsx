@@ -12,10 +12,16 @@ const FILTROS: { valor: CompetenciaVista['estado'] | undefined; clave?: string; 
   { valor: 'finalizada', clave: 'finalizada', texto: 'Finalizadas' },
 ];
 
-export function ListaCompetencias({ estado }: { estado?: string }) {
+export function ListaCompetencias({ estado, texto }: { estado?: string; texto?: string }) {
   const todas = listarCompetencias();
   const filtro = FILTROS.find((f) => f.clave === estado)?.valor;
-  const visibles = filtro ? todas.filter((c) => c.estado === filtro) : todas;
+  const buscado = (texto ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const visibles = todas.filter(
+    (c) =>
+      (!filtro || c.estado === filtro) &&
+      (!buscado ||
+        `${c.nombre} ${c.sede}`.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().includes(buscado)),
+  );
 
   return (
     <div className={estilos.pagina}>
@@ -23,7 +29,7 @@ export function ListaCompetencias({ estado }: { estado?: string }) {
         {FILTROS.map((f) => (
           <CategoryTag
             key={f.texto}
-            href={armarUrl(rutas.panel.federacion.competencias(), { estado: f.clave })}
+            href={armarUrl(rutas.panel.federacion.competencias(), { estado: f.clave, q: texto || undefined })}
             seleccionado={f.valor === filtro}
           >
             {f.texto}
@@ -31,7 +37,7 @@ export function ListaCompetencias({ estado }: { estado?: string }) {
         ))}
       </nav>
 
-      <section aria-label="Competencias" className={estilos.tarjeta}>
+      <section aria-label="Competencias" className={`${estilos.tarjeta} ${estilos.tarjetaTabla}`}>
         {visibles.length === 0 ? (
           <Vacio>No hay competencias con este estado.</Vacio>
         ) : (

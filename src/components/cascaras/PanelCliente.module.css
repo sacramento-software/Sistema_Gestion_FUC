@@ -11,8 +11,15 @@
   z-index: 40;
   flex: none;
   color: var(--color-texto);
-  background: color-mix(in srgb, var(--color-fondo) 92%, transparent);
+  background: color-mix(in srgb, var(--color-superficie) 88%, transparent);
   border-bottom: 1px solid var(--color-linea);
+}
+
+/* Modo claro: barra más transparente, con desenfoque para que el contenido siga legible. */
+:global(:root:not([data-theme="noche"])) .barra {
+  background: color-mix(in srgb, var(--color-superficie) 50%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .franja {
@@ -174,6 +181,12 @@
   min-width: 0;
   box-sizing: border-box;
   padding: var(--panel-padding);
+}
+
+/* El contenido del panel no se estira en pantallas anchas: las tarjetas y listas quedan de un ancho legible. */
+.principal > :not([data-ancho-completo]) {
+  max-width: 1120px;
+  margin-inline: auto;
 }
 
 .velo {

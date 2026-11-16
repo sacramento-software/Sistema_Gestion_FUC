@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowDown, ArrowUp, Check, CircleCheck, Lock, Pencil, Plus, X } from 'lucide-react';
-import { CategoryTag, EstadoSerieBadge, Filete, Icon, Select } from '@/components/ds';
+import { CategoryTag, EstadoSerieBadge, Filete, Icon } from '@/components/ds';
 import { AccionNoDisponible } from '@/components/demo';
 import type { ArmadoDeFase, BoteVista, EventoVista, SerieDetalle } from '@/datos';
 import { rutas } from '@/lib/rutas';
@@ -52,7 +52,7 @@ export function ArmadoVista({ eventos, armado, serie }: Props) {
   const totalDisponibles = disponibles.reduce((n, g) => n + g.botes.length, 0);
   const conInscriptos = inscriptos.length > 0;
   const crearSerie = (
-    <AccionNoDisponible variant="secundario" icon={Plus}>
+    <AccionNoDisponible icon={Plus}>
       Crear serie
     </AccionNoDisponible>
   );
@@ -251,14 +251,8 @@ function SerieActiva({ serie }: { serie: SerieDetalle }) {
             <NumeroCarril n={c.numero} />
           </span>
           <span className={tablas.aSel}>
-            <div role="group" aria-label={`Bote del carril ${c.numero}`}>
-              <Select
-                soloLectura
-                options={[{ value: c.bote.inscripcionId, label: c.bote.nombre }]}
-                value={c.bote.inscripcionId}
-              />
-            </div>
-            <span className={estilos.subtexto} style={{ paddingLeft: 2 }}>
+            <span className={estilos.nombre}>{c.bote.nombre}</span>
+            <span className={estilos.subtexto}>
               {c.bote.clubNombre}
             </span>
           </span>

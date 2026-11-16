@@ -12,6 +12,7 @@ import {
   type PointerEvent,
   type ReactNode,
 } from 'react';
+import { createPortal } from 'react-dom';
 import { cx } from '@/components/ds/cx';
 import { TEXTO_NO_DISPONIBLE } from '@/lib/demo';
 import estilos from './AccionNoDisponible.module.css';
@@ -46,8 +47,7 @@ export function AccionNoDisponibleCliente({
   style,
 }: AccionNoDisponibleClienteProps) {
   const [visible, setVisible] = useState(false);
-  const [abajo, setAbajo] = useState(false);
-  const [corrimiento, setCorrimiento] = useState(0);
+  const [posicion, setPosicion] = useState<{ top: number; left: number } | null>(null);
   const id = useId();
   const raizRef = useRef<HTMLSpanElement>(null);
   const globoRef = useRef<HTMLSpanElement>(null);
@@ -66,22 +66,29 @@ export function AccionNoDisponibleCliente({
     setVisible(false);
   }, [limpiarTemporizador]);
 
-  // Posiciona el globo: arriba si entra, abajo si no, y sin salirse del ancho de pantalla.
+  // El globo va en un portal con posición fija: así ninguna tabla ni tarjeta con `overflow: hidden` lo recorta.
+  // Arriba si entra, abajo si no, y sin salirse del ancho de pantalla.
   useLayoutEffect(() => {
     if (!visible) return;
     const raiz = raizRef.current;
     const globo = globoRef.current;
     if (!raiz || !globo) return;
     const caja = raiz.getBoundingClientRect();
-    setAbajo(caja.top - globo.offsetHeight - SEPARACION < MARGEN);
-    const centro = caja.left + caja.width / 2;
-    const izquierda = centro - globo.offsetWidth / 2;
-    const derecha = centro + globo.offsetWidth / 2;
+    const abajo = caja.top - globo.offsetHeight - SEPARACION < MARGEN;
+    const top = abajo ? caja.bottom + SEPARACION : caja.top - globo.offsetHeight - SEPARACION;
     const limite = document.documentElement.clientWidth - MARGEN;
-    if (izquierda < MARGEN) setCorrimiento(MARGEN - izquierda);
-    else if (derecha > limite) setCorrimiento(limite - derecha);
-    else setCorrimiento(0);
+    const centrado = caja.left + caja.width / 2 - globo.offsetWidth / 2;
+    const left = Math.max(MARGEN, Math.min(centrado, limite - globo.offsetWidth));
+    setPosicion({ top, left });
   }, [visible]);
+
+  // Al desplazarse la página el globo quedaría fuera de lugar: se oculta.
+  useEffect(() => {
+    if (!visible) return;
+    const alDesplazar = () => ocultar();
+    window.addEventListener('scroll', alDesplazar, { passive: true, capture: true });
+    return () => window.removeEventListener('scroll', alDesplazar, true);
+  }, [visible, ocultar]);
 
   // Al tocar fuera (celular) se oculta.
   useEffect(() => {
@@ -141,17 +148,19 @@ export function AccionNoDisponibleCliente({
       >
         {children}
       </button>
-      {visible && (
-        <span
-          ref={globoRef}
-          id={id}
-          role="tooltip"
-          className={cx(estilos.globo, abajo && estilos.globoAbajo)}
-          style={{ transform: `translateX(calc(-50% + ${corrimiento}px))` }}
-        >
-          {TEXTO_NO_DISPONIBLE}
-        </span>
-      )}
+      {visible &&
+        createPortal(
+          <span
+            ref={globoRef}
+            id={id}
+            role="tooltip"
+            className={estilos.globo}
+            style={{ top: posicion?.top ?? 0, left: posicion?.left ?? 0, visibility: posicion ? 'visible' : 'hidden' }}
+          >
+            {TEXTO_NO_DISPONIBLE}
+          </span>,
+          document.body,
+        )}
     </span>
   );
 }

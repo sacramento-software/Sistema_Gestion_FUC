@@ -35,9 +35,9 @@ export const USUARIOS_DEMO: Record<Rol, UsuarioDemo> = {
   federacion: {
     rol: 'federacion',
     usuario: 'admin',
-    nombre: 'Ana Ferreira',
+    nombre: 'Sebastián Gómez',
     rolTexto: 'Federación',
-    iniciales: 'AF',
+    iniciales: 'SG',
     etiquetaPanel: 'Federación',
     contextoPanel: 'Administración',
     inicio: '/panel/federacion',

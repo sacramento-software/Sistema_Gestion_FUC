@@ -19,7 +19,7 @@ import {
   formatearFecha,
   formatearHora,
   formatearRango,
-  hoyISO,
+  hoyDemoISO,
   textoCierre,
 } from '@/dominio/fechas';
 import { calcularResultados, TABLA_PUNTOS, textoAvance, type FilaCalculada } from '@/dominio/resultados';
@@ -349,13 +349,13 @@ function deportistaVista(deportista: Deportista, hoy: FechaISO): DeportistaVista
 // --- Competencias ---------------------------------------------------------------------------------------------
 
 export function listarCompetencias(): CompetenciaVista[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   return [...competencias].sort((a, b) => a.diaInicio - b.diaInicio).map((c) => competenciaVista(c, hoy));
 }
 
 export function obtenerCompetencia(id: string): CompetenciaVista | null {
   const competencia = competenciaPorId.get(id);
-  return competencia ? competenciaVista(competencia, hoyISO()) : null;
+  return competencia ? competenciaVista(competencia, hoyDemoISO()) : null;
 }
 
 export function competenciaEnCurso(): CompetenciaVista | null {
@@ -367,17 +367,17 @@ export function competenciasAbiertas(): CompetenciaVista[] {
 }
 
 export function eventosDeCompetencia(competenciaId: string): EventoVista[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   return eventosDe(competenciaId).map((e) => eventoVista(e, hoy));
 }
 
 export function obtenerEvento(eventoId: string): EventoVista | null {
   const evento = eventoPorId.get(eventoId);
-  return evento ? eventoVista(evento, hoyISO()) : null;
+  return evento ? eventoVista(evento, hoyDemoISO()) : null;
 }
 
 export function programaDeCompetencia(competenciaId: string): DiaPrograma[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   const items: ItemPrograma[] = [];
   for (const evento of eventosDe(competenciaId)) {
     const base = eventoBase(evento);
@@ -432,12 +432,12 @@ export function programaDeCompetencia(competenciaId: string): DiaPrograma[] {
 
 export function obtenerSerie(serieId: string): SerieDetalle | null {
   const serie = seriePorId.get(serieId);
-  return serie ? serieDetalle(serie, hoyISO()) : null;
+  return serie ? serieDetalle(serie, hoyDemoISO()) : null;
 }
 
 export function serieEnVivo(): SerieDetalle | null {
   const serie = series.filter((s) => s.estado === 'en-vivo').sort(porDiaYHora)[0];
-  return serie ? serieDetalle(serie, hoyISO()) : null;
+  return serie ? serieDetalle(serie, hoyDemoISO()) : null;
 }
 
 function seriesDeCompetencia(competenciaId: string): Serie[] {
@@ -446,7 +446,7 @@ function seriesDeCompetencia(competenciaId: string): Serie[] {
 }
 
 export function jornadaDeHoy(): SerieResumen[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   const enCurso = competencias.find((c) => c.estado === 'curso');
   if (!enCurso) return [];
   return seriesDeCompetencia(enCurso.id)
@@ -460,7 +460,7 @@ function esFinalPublicada(serie: Serie): boolean {
 }
 
 export function ultimasFinalesPublicadas(n: number): SerieDetalle[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   return series
     .filter(esFinalPublicada)
     .sort((a, b) => b.dia - a.dia || (b.publicada ?? '').localeCompare(a.publicada ?? ''))
@@ -469,7 +469,7 @@ export function ultimasFinalesPublicadas(n: number): SerieDetalle[] {
 }
 
 export function seriesPublicadas(competenciaId: string): SerieDetalle[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   return seriesDeCompetencia(competenciaId)
     .filter((s) => s.estado === 'publicada')
     .sort(porDiaYHora)
@@ -496,7 +496,7 @@ function cuposDeFase(fase: Fase, elegibles: Set<string> | null, totalInscriptos:
 export function armadoDeFase(faseId: string): ArmadoDeFase | null {
   const fase = fasePorId.get(faseId);
   if (!fase) return null;
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   const evento = obtener(eventoPorId, fase.eventoId, 'Evento');
   const delEvento = fasesDeEvento(evento.id);
   const esPrimera = delEvento[0].id === fase.id;
@@ -553,7 +553,7 @@ export function listarDeportistas(filtro?: {
   categoriaId?: string;
   sexo?: string;
 }): DeportistaVista[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   const buscado = filtro?.texto ? sinTildes(filtro.texto.trim()) : '';
   return deportistas
     .map((d) => deportistaVista(d, hoy))
@@ -573,7 +573,7 @@ export function listarDeportistas(filtro?: {
 
 export function obtenerDeportista(id: string): DeportistaVista | null {
   const deportista = deportistaPorId.get(id);
-  return deportista ? deportistaVista(deportista, hoyISO()) : null;
+  return deportista ? deportistaVista(deportista, hoyDemoISO()) : null;
 }
 
 export function avisosDeInscripcion(deportistaId: string, eventoId: string): AvisoInscripcion[] {
@@ -581,7 +581,7 @@ export function avisosDeInscripcion(deportistaId: string, eventoId: string): Avi
   const evento = eventoPorId.get(eventoId);
   if (!deportista || !evento) return [];
   const tipo = obtener(catalogoPorId, evento.catalogoId, 'Evento de catálogo');
-  return avisosParaEvento(deportista, tipo, hoyISO());
+  return avisosParaEvento(deportista, tipo, hoyDemoISO());
 }
 
 // --- Campeonatos ----------------------------------------------------------------------------------------------
@@ -677,7 +677,7 @@ export function tablaCampeonato(
 export function fichaDeportista(id: string): FichaDeportista | null {
   const deportista = deportistaPorId.get(id);
   if (!deportista) return null;
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   const suyas = inscripciones.filter((i) => i.deportistaIds.includes(id));
   const suyasPorId = new Map(suyas.map((i) => [i.id, i]));
 
@@ -780,7 +780,7 @@ export function fichaDeportista(id: string): FichaDeportista | null {
 // --- Inscripciones --------------------------------------------------------------------------------------------
 
 export function inscripcionesDeEvento(eventoId: string): BoteVista[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   return inscripciones
     .filter((i) => i.eventoId === eventoId)
     .map((i) => boteVista(i, hoy))
@@ -791,7 +791,7 @@ export function inscripcionesDeClub(
   clubId: string,
   competenciaId?: string,
 ): { evento: Omit<EventoVista, 'fases'>; botes: BoteVista[] }[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   const idsCompetencias = competenciaId ? [competenciaId] : competencias.map((c) => c.id);
   return idsCompetencias
     .flatMap((id) => eventosDe(id))
@@ -877,13 +877,13 @@ function noticiaVista(noticia: (typeof noticias)[number], hoy: FechaISO): Notici
 }
 
 export function listarNoticias(): NoticiaVista[] {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   return [...noticias].sort((a, b) => b.dia - a.dia).map((n) => noticiaVista(n, hoy));
 }
 
 export function obtenerNoticia(id: string): NoticiaVista | null {
   const noticia = noticias.find((n) => n.id === id);
-  return noticia ? noticiaVista(noticia, hoyISO()) : null;
+  return noticia ? noticiaVista(noticia, hoyDemoISO()) : null;
 }
 
 export function configuracionFederacion(): ConfiguracionFederacion {

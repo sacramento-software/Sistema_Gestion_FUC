@@ -7,10 +7,10 @@ import estilos from '@/components/vistas/federacion-resto/federacion-resto.modul
 import { cantidadDe, pesos } from '@/components/vistas/federacion-resto/formato';
 import { listarClubes } from '@/datos';
 import { ARANCEL_POR_BOTE, cuotasClubes } from '@/datos/extra/08-federacion-resto';
-import { anioTemporada, fechaRelativa, formatearFecha, hoyISO } from '@/dominio';
+import { anioTemporada, fechaRelativa, formatearFecha, hoyDemoISO } from '@/dominio';
 
 export default function ContabilidadPage() {
-  const hoy = hoyISO();
+  const hoy = hoyDemoISO();
   const clubes = new Map(listarClubes().map((c) => [c.id, c]));
 
   const filas = cuotasClubes
@@ -36,7 +36,7 @@ export default function ContabilidadPage() {
         titulo="Contabilidad"
         subtitulo={`Temporada ${anioTemporada(hoy)}`}
         acciones={
-          <AccionNoDisponible variant="secundario" icon={Download}>
+          <AccionNoDisponible icon={Download}>
             Exportar planilla
           </AccionNoDisponible>
         }

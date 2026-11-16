@@ -47,6 +47,9 @@
   border-top: 1px solid var(--color-linea);
   border-bottom: 1px solid var(--color-linea);
 }
+.tripulacion:hover {
+  background: var(--color-fila-hover);
+}
 
 .enlace {
   display: inline-block;
@@ -81,6 +84,9 @@
   text-decoration: none;
   border-top: 1px solid var(--color-linea-suave);
 }
+.filaFija:hover {
+  background: var(--color-fila-hover);
+}
 .filaFija {
   min-height: 72px;
 }
@@ -94,6 +100,9 @@ a.fila:hover {
   gap: 4px 16px;
   padding: 14px 0;
   border-bottom: 1px solid var(--color-linea-suave);
+}
+.filaMejor:hover {
+  background: var(--color-fila-hover);
 }
 
 .textos {
@@ -124,10 +133,10 @@ a.fila:hover {
 .encabezadoTabla {
   display: grid;
   padding: 12px 0 8px;
-  font: 500 12px/1 var(--font-mono);
-  letter-spacing: 0.14em;
+  font: 700 17px/1 var(--font-titulo);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-texto-sec);
+  color: var(--color-texto);
 }
 
 .gridCarreras {
@@ -185,4 +194,22 @@ a.fila:hover {
   .pagina .nombre {
     font-size: 52px;
   }
+}
+
+/* Franja alterna en las filas de tabla. */
+.fila:nth-child(even):not(:hover),
+.filaFija:nth-child(even):not(:hover) {
+  background: var(--color-fila-par);
+}
+
+/* Encabezado de columnas: texto siempre centrado */
+.encabezadoTabla {
+  text-align: center;
+  justify-items: center;
+}
+.encabezadoTabla > *,
+.encabezadoTabla > .derecha {
+  text-align: center;
+  justify-self: center;
+  justify-content: center;
 }

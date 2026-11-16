@@ -1,6 +1,7 @@
-import { Ban } from 'lucide-react';
+import { Ban, Plus } from 'lucide-react';
 import { CategoryTag } from '@/components/ds';
 import { AccionNoDisponible } from '@/components/demo';
+import { BarraGestion } from '@/components/vistas/comun/BarraGestion';
 import { catalogoDeEventos } from '@/datos';
 import { CATEGORIAS } from '@/dominio/categorias';
 import { rutas } from '@/lib/rutas';
@@ -12,6 +13,7 @@ export interface FiltrosCatalogo {
   categoria?: string;
   genero?: string;
   inactivos?: string;
+  q?: string;
 }
 
 const EMBARCACIONES = ['K1', 'K2', 'K4', 'C1', 'C2'];
@@ -63,7 +65,8 @@ export function Catalogo({ filtros }: { filtros: FiltrosCatalogo }) {
       (mostrarInactivos || e.activo) &&
       (!filtros.embarcacion || e.embarcacion === filtros.embarcacion) &&
       (!filtros.categoria || e.categoriaId === filtros.categoria) &&
-      (!filtros.genero || e.genero === filtros.genero),
+      (!filtros.genero || e.genero === filtros.genero) &&
+      (!filtros.q || e.codigo.toLowerCase().includes(filtros.q.toLowerCase())),
   );
 
   return (
@@ -71,6 +74,19 @@ export function Catalogo({ filtros }: { filtros: FiltrosCatalogo }) {
       <BandaInfo>
         La nomenclatura es embarcación-distancia-categoría-género: K2-500-JUNIOR-F se lee «K2 500 m · Junior · Femenino».
       </BandaInfo>
+
+      <BarraGestion
+        accion={rutas.panel.federacion.catalogo()}
+        placeholder="Buscar por código, ej. K2-500"
+        q={filtros.q}
+        conservar={{
+          embarcacion: filtros.embarcacion,
+          categoria: filtros.categoria,
+          genero: filtros.genero,
+          inactivos: filtros.inactivos,
+        }}
+        alta={<AccionNoDisponible icon={Plus}>Crear evento</AccionNoDisponible>}
+      />
 
       <section aria-label="Filtros del catálogo" className={estilos.pagina}>
         <GrupoFiltro
@@ -98,16 +114,16 @@ export function Catalogo({ filtros }: { filtros: FiltrosCatalogo }) {
         </div>
       </section>
 
-      <section aria-label="Eventos del catálogo" className={estilos.tarjeta}>
+      <section aria-label="Eventos del catálogo" className={`${estilos.tarjeta} ${estilos.tarjetaTabla}`}>
         {visibles.length === 0 ? (
           <Vacio>No hay eventos del catálogo con estos filtros.</Vacio>
         ) : (
           <>
             <div className={`${estilos.encabezadoTabla} ${estilos.tablaCatalogo}`} aria-hidden="true">
-              <span>Código</span>
-              <span>Evento</span>
-              <span>Usos</span>
-              <span>Estado</span>
+              <span>CÓDIGO</span>
+              <span>EVENTO</span>
+              <span>USOS</span>
+              <span>ESTADO</span>
               <span />
             </div>
             {visibles.map((e) => (

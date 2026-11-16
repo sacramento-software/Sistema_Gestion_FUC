@@ -24,12 +24,15 @@ interface TarjetaProps {
   titulo: string;
   meta?: ReactNode;
   children: ReactNode;
+  /** «revision»: fondo crema amarillo; «publicada»: fondo azul sólido. */
+  variante?: 'revision' | 'publicada';
 }
 
 /** Tarjeta con filete doble, título y un texto en mono a la derecha. */
-export function TarjetaJuez({ etiquetaAria, titulo, meta, children }: TarjetaProps) {
+export function TarjetaJuez({ etiquetaAria, titulo, meta, children, variante }: TarjetaProps) {
+  const extra = variante === 'revision' ? estilos.tarjetaRevision : variante === 'publicada' ? estilos.tarjetaPublicada : '';
   return (
-    <section aria-label={etiquetaAria} className={estilos.tarjeta}>
+    <section aria-label={etiquetaAria} className={`${estilos.tarjeta} ${extra}`}>
       <Filete />
       <div className={estilos.tarjetaCabecera}>
         <h4 className={estilos.tarjetaTitulo}>{titulo}</h4>

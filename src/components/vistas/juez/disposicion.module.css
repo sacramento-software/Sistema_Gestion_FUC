@@ -17,9 +17,10 @@
 
 .itemSerie {
   display: grid;
-  grid-template-columns: 52px minmax(0, 1fr);
-  gap: 8px;
-  padding: 12px 16px;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 10px 16px;
   border-top: 1px solid var(--color-linea-suave);
   color: var(--color-texto);
   text-decoration: none;
@@ -47,8 +48,15 @@
   line-height: 20px;
 }
 .itemBadge {
-  grid-column: 2;
   display: flex;
+  justify-content: flex-end;
+}
+.cabeceraLista {
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  gap: 8px 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 15px;
 }
 
 .cabeceraSerie {
@@ -257,6 +265,9 @@
   padding: 10px 20px;
   border-top: 1px solid var(--color-linea-suave);
 }
+.inscripto:hover {
+  background: var(--color-fila-hover);
+}
 .ubicacion {
   font: 500 14px/1 var(--font-mono);
   color: var(--color-texto-sec);
@@ -275,6 +286,9 @@
   padding: 12px 16px;
   border-top: 1px solid var(--color-linea-suave);
 }
+.itemResultado:hover {
+  background: var(--color-fila-hover);
+}
 .itemResultadoLink {
   display: flex;
   flex: 1 1 280px;
@@ -291,7 +305,7 @@
 
 @media (min-width: 1024px) {
   .consola {
-    grid-template-columns: 256px minmax(0, 1fr);
+    grid-template-columns: 360px minmax(0, 1fr);
   }
   .listaSeries {
     max-height: none;
@@ -309,4 +323,76 @@
   .contador {
     align-items: flex-end;
   }
+}
+
+/* Franja alterna en las filas de resultados. */
+.itemResultado:nth-child(even):not(:hover) {
+  background: var(--color-fila-par);
+}
+
+/* Chips de evento de la jornada: fondo sólido (blanco en claro) mientras no están elegidos. */
+.chipsEvento a:not([aria-current]) {
+  background: var(--color-superficie);
+}
+.chipsEvento a:not([aria-current]):hover {
+  background: var(--color-superficie-2);
+}
+
+/* Grupos de resultados: «En revisión» con detalle ámbar, «Publicadas» con detalle azul. */
+.grupoCabecera {
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.grupoIcono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.grupoCuenta {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 600;
+}
+.grupoRevision .grupoIcono {
+  color: #8a6100;
+  background: #fbefc4;
+}
+.grupoRevision .grupoCuenta {
+  color: #8a6100;
+}
+.grupoRevision .itemResultado {
+  box-shadow: inset 4px 0 0 #e0a800;
+}
+.grupoPublicada .grupoIcono {
+  color: #fff;
+  background: #1f5fae;
+}
+.grupoPublicada .grupoCuenta {
+  color: #1f5fae;
+}
+.grupoPublicada .itemResultado {
+  box-shadow: inset 4px 0 0 #1f5fae;
+}
+:global([data-theme='noche']) .grupoRevision .grupoIcono {
+  color: #f3cf62;
+  background: #4a3f18;
+}
+:global([data-theme='noche']) .grupoRevision .grupoCuenta {
+  color: #f3cf62;
+}
+:global([data-theme='noche']) .grupoRevision .itemResultado {
+  box-shadow: inset 4px 0 0 #c9971a;
+}
+:global([data-theme='noche']) .grupoPublicada .grupoIcono {
+  background: #2f6fbd;
+}
+:global([data-theme='noche']) .grupoPublicada .grupoCuenta {
+  color: #8db8ee;
+}
+:global([data-theme='noche']) .grupoPublicada .itemResultado {
+  box-shadow: inset 4px 0 0 #4a86d1;
 }

@@ -1,6 +1,7 @@
 .tabla {
   overflow: hidden;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   color: var(--color-texto);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
@@ -16,18 +17,21 @@
   justify-content: space-between;
   gap: 12px;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--color-linea);
+  border-bottom: 2px solid var(--celeste-sello);
 }
 .cabeceraCompacta {
+  background: none;
   padding: 12px 0;
 }
 
 .titulo {
   margin: 0;
   font-family: var(--font-titulo);
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .tituloCompacto {
   font-size: 18px;
@@ -41,10 +45,10 @@
 
 .encabezado {
   padding: 10px 20px;
-  font: 600 11px/1 var(--font-mono);
-  letter-spacing: 0.1em;
+  font: 700 17px/1 var(--font-titulo);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-texto-sec);
+  color: var(--color-texto);
   border-bottom: 1px solid var(--color-linea);
 }
 
@@ -53,6 +57,9 @@
   padding: 14px 20px;
   font-size: 16px;
   border-bottom: 1px solid var(--color-linea-suave);
+}
+.datos:hover {
+  background: var(--color-fila-hover);
 }
 
 .resaltada {
@@ -98,6 +105,9 @@
   min-height: 56px;
   padding: 10px 0;
   border-bottom: 1px solid var(--color-linea);
+}
+.filaCompacta:hover {
+  background: var(--color-fila-hover);
 }
 .resaltadaCompacta {
   padding-left: 10px;
@@ -147,4 +157,44 @@
     padding-left: 12px;
     padding-right: 12px;
   }
+}
+
+/* Estilo de tabla unificado: filas definidas, sombra propia y línea de color bajo el encabezado. */
+.tabla:not(.tablaCompacta) {
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(15, 34, 54, 0.06),
+    0 12px 32px -8px rgba(20, 40, 75, 0.22);
+}
+.encabezado {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  letter-spacing: 0.1em;
+  background: color-mix(in srgb, var(--celeste-sello) 9%, var(--color-superficie));
+  border-bottom: 3px solid var(--celeste-boton);
+}
+.datos {
+  border-bottom: 1px solid var(--color-linea);
+}
+.datos:nth-of-type(even) {
+  background: var(--color-fila-par);
+}
+.datos:hover {
+  background: color-mix(in srgb, var(--celeste-sello) 10%, var(--color-superficie));
+}
+.datos.resaltada,
+.datos.resaltada:hover {
+  background: var(--color-superficie-2);
+}
+
+/* Encabezado de columnas: texto siempre centrado */
+.encabezado {
+  text-align: center;
+  justify-items: center;
+}
+.encabezado > *,
+.encabezado > .derecha {
+  text-align: center;
+  justify-self: center;
+  justify-content: center;
 }

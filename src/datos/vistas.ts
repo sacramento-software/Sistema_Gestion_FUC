@@ -174,7 +174,7 @@ export interface FichaDeportista {
   deportista: DeportistaVista;
   embarcaciones: Embarcacion[];
   tripulaciones: { eventoLectura: string; companeros: { id: string; nombreCompleto: string }[] }[];
-  /** 'K1 500 m' · '1:41.27' · 'Eliminatoria 2 · Campeonato Nacional de Velocidad · 15 nov 2026' */
+  /** 'K1 500 m' · '1:41.27' · 'Serie B · Campeonato Nacional de Velocidad · 15 nov 2026' */
   mejoresTiempos: {
     etiqueta: string;
     tiempo: string;
@@ -260,7 +260,7 @@ export interface ItemPrograma {
   eventoLectura: string;
   filtroCategoria: string;
   fase: string;
-  /** 'Eliminatoria 1 · K1 500 m' o, si está prevista, 'Final · K2 500 m'. */
+  /** 'Serie A · K1 500 m' o, si está prevista, 'Final · K2 500 m'. */
   titulo: string;
   categoriaGenero: string;
   estado: EstadoSerie | 'prevista';

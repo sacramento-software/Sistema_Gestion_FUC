@@ -5,6 +5,7 @@ import {
   EB_Garamond,
   IBM_Plex_Mono,
   Public_Sans,
+  Source_Serif_4,
 } from 'next/font/google';
 
 const publicSans = Public_Sans({
@@ -51,6 +52,13 @@ const bodoni = Bodoni_Moda({
   display: 'swap',
 });
 
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--fuente-source-serif',
+  display: 'swap',
+});
+
 export const clasesFuentes = [
   publicSans.variable,
   plexMono.variable,
@@ -58,4 +66,5 @@ export const clasesFuentes = [
   barlow.variable,
   ebGaramond.variable,
   bodoni.variable,
+  sourceSerif.variable,
 ].join(' ');

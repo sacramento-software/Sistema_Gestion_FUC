@@ -29,7 +29,7 @@
 }
 
 .sigla {
-  font-family: var(--font-titulo);
+  font-family: var(--font-logo);
   font-weight: 700;
   line-height: 1;
 }

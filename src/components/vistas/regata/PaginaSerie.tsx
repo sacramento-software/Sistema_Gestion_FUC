@@ -53,13 +53,11 @@ function Banda({ serie }: { serie: SerieDetalle }) {
     case 'en-vivo':
       return (
         <div role="status" className={cx(estilos.banda, estilos.bandaVivo)}>
-          <span className={estilos.iconoVivo}>
-            <PuntoEnVivo tamano={18} />
-          </span>
-          <div className={estilos.textosBanda}>
+          <span className={estilos.marcaVivo}>
+            <PuntoEnVivo tamano={8} />
             <span className={estilos.enVivo}>EN VIVO</span>
-            <span className={estilos.descripcion}>La serie está en carrera. Los tiempos se publican al cierre de la serie.</span>
-          </div>
+          </span>
+          <span className={estilos.textoVivo}>La serie está en carrera. Los tiempos se publican al cierre de la serie.</span>
         </div>
       );
     case 'terminada':
@@ -197,7 +195,7 @@ function Resultados({
         <span className={estilos.aPos}>Pos</span>
         <span className={estilos.aCarril}>Carril</span>
         <span className={estilos.aNombre}>Deportista · club</span>
-        <span className={estilos.aTiempo}>Tiempo · dif.</span>
+        <span className={estilos.aTiempo}>Tiempo</span>
         {conPuntos && <span className={estilos.aPuntos}>Pts</span>}
         <span className={estilos.aPildora} />
       </div>

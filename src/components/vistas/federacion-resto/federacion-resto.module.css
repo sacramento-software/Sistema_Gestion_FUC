@@ -9,10 +9,10 @@
 }
 
 .etiqueta {
-  font: 500 12px/1.2 var(--font-mono);
-  letter-spacing: 0.14em;
+  font: 700 12px/1.2 var(--font-cuerpo);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-texto-sec);
+  color: var(--color-texto);
 }
 
 .mono {
@@ -23,27 +23,38 @@
 .tarjeta {
   min-width: 0;
   overflow: hidden;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
 
 .tarjetaCabecera {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   gap: 8px 12px;
   padding: 16px 20px 12px;
+  border-bottom: 2px solid var(--celeste-sello);
 }
 
 .tarjetaTitulo {
+  min-width: 0;
   margin: 0;
-  font: 700 22px/1.15 var(--font-titulo);
+  font: 700 17px/1.15 var(--font-titulo);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .tarjetaCuerpo {
   padding: 0 20px 20px;
+}
+
+.pieTarjeta {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px 16px;
 }
 
 .nota {
@@ -78,7 +89,8 @@
   gap: 6px;
   min-width: 0;
   padding: 16px;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
@@ -205,6 +217,9 @@
   padding: 8px 20px;
   border-top: 1px solid var(--color-linea-suave);
 }
+.fila:hover {
+  background: var(--color-fila-hover);
+}
 .filaTexto {
   display: flex;
   flex-wrap: wrap;
@@ -274,10 +289,10 @@
 .tabla th {
   padding: 10px 20px;
   text-align: left;
-  font: 500 12px/1 var(--font-mono);
-  letter-spacing: 0.14em;
+  font: 700 12px/1 var(--font-cuerpo);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-texto-sec);
+  color: var(--color-texto);
   border-top: 1px solid var(--color-linea);
   border-bottom: 1px solid var(--color-linea);
 }
@@ -329,15 +344,63 @@
   .tabla td::before {
     content: attr(data-etiqueta);
     flex: none;
-    font: 500 12px/1.2 var(--font-mono);
-    letter-spacing: 0.1em;
+    font: 700 12px/1.2 var(--font-cuerpo);
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-texto-sec);
+    color: var(--color-texto);
     text-align: left;
   }
 }
 
-/* Configuración */
+/* Configuración: tarjetas del tamaño de su contenido, datos en solo lectura y «Editar» arriba a la derecha. */
+.tarjetaLado {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.configGrilla {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px;
+}
+.configCategorias {
+  flex: 0 1 560px;
+  min-width: 0;
+}
+.configColumna {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 0 1 460px;
+  min-width: 0;
+}
+.valores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 14px 16px;
+  margin: 0;
+  padding: 16px 20px;
+}
+.valor {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+}
+.valor dt {
+  font: 700 12px/1.2 var(--font-cuerpo);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-texto-sec);
+}
+.valor dd {
+  margin: 0;
+  font: 700 22px/1.1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-texto);
+}
 .camposPuntos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -446,4 +509,88 @@
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+/* Tarjeta suelta: al pasar el mouse sube y cambia de color. */
+.metrica {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+.metrica:hover {
+  background: var(--color-tarjeta-hover);
+  border-color: var(--celeste-sello);
+  box-shadow: var(--sombra-tarjeta-hover);
+  transform: translateY(-5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .metrica:hover {
+    transform: none;
+  }
+}
+
+/* Estilo de tabla unificado: filas definidas, sombra propia y línea de color bajo el encabezado. */
+.tarjeta:has(.tabla) {
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(15, 34, 54, 0.06),
+    0 12px 32px -8px rgba(20, 40, 75, 0.22);
+}
+.tabla th {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  font: 700 17px/1 var(--font-titulo);
+  letter-spacing: 0.1em;
+  background: color-mix(in srgb, var(--celeste-sello) 9%, var(--color-superficie));
+  border-top: 0;
+  border-bottom: 3px solid var(--celeste-boton);
+}
+.tabla td {
+  border-top: 1px solid var(--color-linea);
+}
+.tabla tbody tr:nth-child(even) {
+  background: var(--color-fila-par);
+}
+.tabla tbody tr:hover,
+.tabla tbody tr:nth-child(even):hover {
+  background: color-mix(in srgb, var(--celeste-sello) 14%, var(--color-superficie));
+  box-shadow: inset 3px 0 0 var(--celeste-boton);
+}
+.barra {
+  margin: 0 -8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+.barra:hover {
+  background: color-mix(in srgb, var(--celeste-sello) 14%, var(--color-superficie));
+  box-shadow: inset 3px 0 0 var(--celeste-boton);
+}
+@media (max-width: 719px) {
+  .tabla tr {
+    border-top: 1px solid var(--color-linea);
+  }
+}
+
+/* Tarjetas con un solo dato: etiqueta a la izquierda y valor a la derecha. */
+.valoresFila {
+  display: block;
+}
+.valoresFila .valor {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Franja alterna en las filas de lista. */
+.fila:nth-child(even):not(:hover) {
+  background: var(--color-fila-par);
+}
+
+/* Encabezado de columnas: texto siempre centrado */
+.tabla th,
+.tabla th.derecha {
+  text-align: center !important;
 }

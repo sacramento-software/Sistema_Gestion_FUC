@@ -1,6 +1,7 @@
 .raiz {
   position: relative;
   display: inline-flex;
+  width: fit-content;
   max-width: 100%;
 }
 .raizCompleta {
@@ -12,6 +13,7 @@
 .boton {
   position: relative;
   display: inline-flex;
+  width: fit-content;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -48,11 +50,38 @@
   inset: -4px 0;
 }
 
-.primario,
-.secundario,
 .peligro {
-  /* Los tres se ven igual: gris de deshabilitado. */
   background: var(--color-deshabilitado-bg);
+}
+
+/* Altas y «Ver detalles»: se ven activos (celeste) aunque no hagan nada; el aviso sale al tocarlos. */
+.primario {
+  color: var(--blanco);
+  background: var(--celeste-boton);
+  cursor: pointer;
+}
+.primario:hover {
+  background: var(--celeste-boton-hover);
+}
+/* Más ajustado al texto: menos relleno lateral y menos separación del ícono. */
+.primario.md {
+  height: 44px;
+  padding: 0 14px;
+  gap: 6px;
+}
+.primario.sm {
+  padding: 0 12px;
+  gap: 6px;
+}
+
+.secundario {
+  color: var(--celeste-boton);
+  background: transparent;
+  border-color: var(--celeste-boton);
+  cursor: pointer;
+}
+.secundario:hover {
+  background: color-mix(in srgb, var(--celeste-boton) 12%, transparent);
 }
 
 .terciario {
@@ -72,10 +101,8 @@
 }
 
 .globo {
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  z-index: 60;
+  position: fixed;
+  z-index: 1000;
   width: max-content;
   max-width: min(260px, calc(100vw - 16px));
   padding: 8px 12px;
@@ -90,9 +117,4 @@
   border-radius: 10px;
   box-shadow: var(--sombra-1);
   pointer-events: none;
-}
-
-.globoAbajo {
-  top: calc(100% + 8px);
-  bottom: auto;
 }

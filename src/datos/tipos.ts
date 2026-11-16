@@ -111,7 +111,7 @@ export interface Carril {
 export interface Serie {
   id: string;
   faseId: string;
-  /** 'Eliminatoria 1' | 'Repechaje' | 'Semifinal 1' | 'Final A' */
+  /** 'Serie A' | 'Repechaje' | 'Semifinal 1' | 'Final A' */
   nombre: string;
   dia: number;
   hora: Hora;

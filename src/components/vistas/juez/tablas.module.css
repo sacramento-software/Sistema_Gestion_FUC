@@ -22,6 +22,12 @@
 .carga .aNom { grid-area: nom; }
 .carga .aT { grid-area: t; }
 .carga .aC { grid-area: c; }
+.posicionCalculada {
+  text-align: right;
+  font: 600 22px/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-texto);
+}
 .campoTiempo input {
   height: 52px;
   font-size: 22px;
@@ -69,6 +75,41 @@
 .armado .aSel { grid-area: sel; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .armado .aOrd { grid-area: ord; display: flex; gap: 8px; align-items: center; }
 
+/* Subir, bajar y quitar: crema suave en vez del gris de deshabilitado. */
+.armado .aOrd [aria-disabled='true'] {
+  background: #f3ead6;
+  color: #7a6a45;
+  border-color: #e6d9b8;
+}
+.armado .aOrd [aria-disabled='true']:hover {
+  background: #ede1c4;
+}
+/* La cruz (quitar) lleva un toque de rojo. */
+.armado .aOrd > :last-child [aria-disabled='true'] {
+  background: #f6dcd6;
+  color: #b4372b;
+  border-color: #eac0b8;
+}
+.armado .aOrd > :last-child [aria-disabled='true']:hover {
+  background: #f1cdc5;
+}
+:global([data-theme='noche']) .armado .aOrd > :last-child [aria-disabled='true'] {
+  background: #4a2a26;
+  color: #f0a69c;
+  border-color: #613832;
+}
+:global([data-theme='noche']) .armado .aOrd > :last-child [aria-disabled='true']:hover {
+  background: #57312c;
+}
+:global([data-theme='noche']) .armado .aOrd [aria-disabled='true'] {
+  background: #3a3426;
+  color: #d9c9a0;
+  border-color: #4d4532;
+}
+:global([data-theme='noche']) .armado .aOrd [aria-disabled='true']:hover {
+  background: #453d2d;
+}
+
 .celular {
   display: inline;
 }
@@ -78,27 +119,27 @@
     display: none;
   }
   .carriles {
-    grid-template-columns: 56px minmax(0, 1.2fr) minmax(0, 1fr);
+    grid-template-columns: 88px minmax(0, 1.2fr) minmax(0, 1fr);
     grid-template-areas: 'n nom club';
   }
   .carga {
-    grid-template-columns: 48px minmax(0, 1fr) 140px 128px;
+    grid-template-columns: 88px minmax(0, 1fr) 180px 120px;
     grid-template-areas: 'n nom t c';
   }
   .res {
-    grid-template-columns: 56px 48px minmax(0, 1fr) 130px;
+    grid-template-columns: 56px 84px minmax(0, 1fr) 130px;
     grid-template-areas: 'pos carril nom t';
   }
   .resEdita {
-    grid-template-columns: 56px 48px minmax(0, 1fr) 130px 48px;
+    grid-template-columns: 56px 84px minmax(0, 1fr) 130px 48px;
     grid-template-areas: 'pos carril nom t e';
   }
   .resPts {
-    grid-template-columns: 56px 48px minmax(0, 1fr) 130px 64px;
+    grid-template-columns: 56px 84px minmax(0, 1fr) 130px 64px;
     grid-template-areas: 'pos carril nom t pts';
   }
   .resPtsEdita {
-    grid-template-columns: 56px 48px minmax(0, 1fr) 130px 64px 48px;
+    grid-template-columns: 56px 84px minmax(0, 1fr) 130px 64px 48px;
     grid-template-areas: 'pos carril nom t pts e';
   }
   .aCarril,
@@ -106,11 +147,11 @@
     display: block;
   }
   .resumen {
-    grid-template-columns: 56px 48px minmax(0, 1fr) 120px;
+    grid-template-columns: 56px 84px minmax(0, 1fr) 120px;
     grid-template-areas: 'pos carril nom t';
   }
   .armado {
-    grid-template-columns: 48px minmax(0, 1fr) 160px;
+    grid-template-columns: 112px minmax(0, 1fr) 160px;
     grid-template-areas: 'n sel ord';
   }
 }

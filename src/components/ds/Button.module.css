@@ -1,6 +1,8 @@
 .boton {
   position: relative;
   display: inline-flex;
+  width: fit-content; /* no se estira dentro de columnas flex */
+  max-width: 100%;
   align-items: center;
   justify-content: center;
   gap: 8px;

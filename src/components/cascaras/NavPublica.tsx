@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, LayoutDashboard, LogIn, Newspaper, Radio, Trophy, Users, type LucideIcon } from 'lucide-react';
+import { Calendar, House, LayoutDashboard, LogIn, Newspaper, Radio, Trophy, Users, type LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cx } from '@/components/ds/cx';
@@ -17,6 +17,7 @@ interface Destino {
 }
 
 const DESTINOS: Destino[] = [
+  { texto: 'Inicio', icono: House, href: rutas.inicio() },
   { texto: 'Competencias', icono: Calendar, href: rutas.competencias() },
   { texto: 'En vivo', icono: Radio, href: rutas.enVivo(), enVivo: true },
   { texto: 'Rankings', icono: Trophy, href: rutas.rankings() },
@@ -24,15 +25,22 @@ const DESTINOS: Destino[] = [
   { texto: 'Deportistas', icono: Users, href: rutas.deportistas() },
 ];
 
-const esActivo = (ruta: string, href: string) => ruta === href || ruta.startsWith(`${href}/`);
+/** La serie en vivo cuelga de Competencias, pero en el menú cuenta como «En vivo». */
+const esActivo = (ruta: string, d: Destino, rutaEnVivo: string | null) => {
+  if (d.href === rutas.inicio()) return ruta === d.href;
+  const enSerieVivo = rutaEnVivo !== null && ruta === rutaEnVivo;
+  if (d.enVivo) return enSerieVivo || ruta === d.href;
+  if (enSerieVivo) return false;
+  return ruta === d.href || ruta.startsWith(`${d.href}/`);
+};
 
 /** Navegación del encabezado (escritorio). */
-export function NavEscritorio({ hayEnVivo }: { hayEnVivo: boolean }) {
+export function NavEscritorio({ hayEnVivo, rutaEnVivo }: { hayEnVivo: boolean; rutaEnVivo: string | null }) {
   const ruta = usePathname();
   return (
     <nav aria-label="Principal" className={estilos.escritorio}>
       {DESTINOS.map((d) => {
-        const activo = esActivo(ruta, d.href);
+        const activo = esActivo(ruta, d, rutaEnVivo);
         return (
           <Link
             key={d.href}
@@ -50,12 +58,12 @@ export function NavEscritorio({ hayEnVivo }: { hayEnVivo: boolean }) {
 }
 
 /** Navegación inferior fija (celular y tableta). */
-export function NavInferior({ hayEnVivo }: { hayEnVivo: boolean }) {
+export function NavInferior({ hayEnVivo, rutaEnVivo }: { hayEnVivo: boolean; rutaEnVivo: string | null }) {
   const ruta = usePathname();
   return (
     <nav aria-label="Secciones" className={estilos.inferior}>
       {DESTINOS.map((d) => {
-        const activo = esActivo(ruta, d.href);
+        const activo = esActivo(ruta, d, rutaEnVivo);
         return (
           <Link
             key={d.href}

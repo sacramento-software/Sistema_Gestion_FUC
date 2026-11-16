@@ -50,11 +50,20 @@ export function hoyISO(ahora: Date = new Date()): FechaISO {
   return `${valor('year')}-${valor('month')}-${valor('day')}`;
 }
 
+/** Primer día que puede mostrar la demo como «hoy»: el Nacional de Velocidad se ve el 21 y 22 de noviembre. */
+export const HOY_DEMO_MINIMO: FechaISO = '2026-11-21';
+
+/** «Hoy» de la demo: la fecha real, pero nunca antes de `HOY_DEMO_MINIMO`. */
+export function hoyDemoISO(ahora: Date = new Date()): FechaISO {
+  const real = hoyISO(ahora);
+  return real < HOY_DEMO_MINIMO ? HOY_DEMO_MINIMO : real;
+}
+
 export function sumarDias(fecha: FechaISO, n: number): FechaISO {
   return new Date(utc(fecha) + n * MS_DIA).toISOString().slice(0, 10);
 }
 
-export function fechaRelativa(desfase: number, hoy: FechaISO = hoyISO()): FechaISO {
+export function fechaRelativa(desfase: number, hoy: FechaISO = hoyDemoISO()): FechaISO {
   return sumarDias(hoy, desfase);
 }
 
@@ -62,7 +71,7 @@ export function diasEntre(desde: FechaISO, hasta: FechaISO): number {
   return Math.round((utc(hasta) - utc(desde)) / MS_DIA);
 }
 
-export function anioTemporada(hoy: FechaISO = hoyISO()): number {
+export function anioTemporada(hoy: FechaISO = hoyDemoISO()): number {
   return partes(hoy).anio;
 }
 
@@ -113,7 +122,7 @@ export function formatearHora(hora: Hora): string {
 }
 
 /** «Cierra en 3 días · 18 de noviembre, 23:59», «Cierra mañana · …», «Cierra hoy · 23:59», «Cerró el 18 de noviembre». */
-export function textoCierre(fecha: FechaISO, hora: Hora, hoy: FechaISO = hoyISO()): string {
+export function textoCierre(fecha: FechaISO, hora: Hora, hoy: FechaISO = hoyDemoISO()): string {
   const { dia, mes } = partes(fecha);
   const diaTexto = `${dia} de ${MESES[mes - 1]}`;
   const faltan = diasEntre(hoy, fecha);

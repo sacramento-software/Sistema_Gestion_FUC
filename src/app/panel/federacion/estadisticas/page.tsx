@@ -10,10 +10,10 @@ import {
 import estilos from '@/components/vistas/federacion-resto/federacion-resto.module.css';
 import { listarClubes, listarCompetencias, listarDeportistas } from '@/datos';
 import { botesTemporadasAnteriores } from '@/datos/extra/08-federacion-resto';
-import { anioTemporada, hoyISO } from '@/dominio';
+import { anioTemporada, hoyDemoISO } from '@/dominio';
 
 export default function EstadisticasPage() {
-  const anio = anioTemporada(hoyISO());
+  const anio = anioTemporada(hoyDemoISO());
   const sexo = deportistasPorSexo();
 
   // Las cuatro temporadas anteriores son datos propios; la actual se calcula.
@@ -38,16 +38,19 @@ export default function EstadisticasPage() {
 
         <div className={estilos.graficos}>
           <GraficoBarras
+            verDetalles
             titulo="Participación por categoría"
             datos={participacionPorCategoria().map((c) => ({ etiqueta: c.nombre, valor: c.deportistas }))}
             nota="Deportistas distintos que compitieron en la temporada."
           />
           <GraficoBarras
+            verDetalles
             titulo="Participación por club"
             datos={botesPorClub().map((c) => ({ etiqueta: c.nombre, valor: c.botes }))}
             nota="Botes inscriptos en la temporada."
           />
           <GraficoBarras
+            verDetalles
             titulo="Deportistas por sexo"
             datos={[
               { etiqueta: 'Femenino', valor: sexo.femenino },
@@ -55,6 +58,7 @@ export default function EstadisticasPage() {
             ]}
           />
           <GraficoBarras
+            verDetalles
             titulo="Evolución de inscriptos por temporada"
             datos={evolucion}
             nota="Botes inscriptos en cada temporada."

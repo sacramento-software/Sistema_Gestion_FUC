@@ -7,11 +7,11 @@
   align-items: center;
   gap: 16px;
   margin: 0 0 12px;
-  font-family: var(--font-titulo);
-  font-size: clamp(40px, 5vw, 64px);
+  font-family: var(--font-logo);
+  font-size: clamp(40px, 5.5vw, 68px);
   font-style: italic;
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 0.95;
   text-transform: uppercase;
   text-wrap: balance;
 }
@@ -19,8 +19,8 @@
 .barra {
   flex: none;
   width: 12px;
-  height: 0.8em;
-  background: var(--color-filete-2);
+  height: 0.9em;
+  background: var(--celeste-sello);
   transform: skewX(-14deg);
 }
 

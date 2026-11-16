@@ -4,13 +4,20 @@
   overflow: hidden;
   color: var(--color-texto);
   text-decoration: none;
-  background: var(--color-superficie);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: var(--radio-tarjeta);
 }
 
 .tarjeta:hover {
   background: var(--color-superficie-2);
+}
+
+.interior {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .foto {
@@ -21,6 +28,7 @@
 
 .imagen {
   object-fit: cover;
+  object-position: center 30%;
 }
 
 .cuerpo {
@@ -41,10 +49,10 @@
   flex-wrap: wrap;
   gap: 4px 16px;
   margin: 0;
-  font: 500 12px/1.2 var(--font-mono);
-  letter-spacing: 0.06em;
+  font: 700 12px/1.2 var(--font-cuerpo);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-texto-sec);
+  color: var(--color-texto);
 }
 
 .titulo {
@@ -64,7 +72,7 @@
 }
 
 @media (min-width: 900px) {
-  .destacada {
+  .destacada .interior {
     flex-direction: row;
   }
 
@@ -84,5 +92,25 @@
 
   .destacada .titulo {
     font-size: 40px;
+  }
+}
+
+/* Tarjeta suelta: al pasar el mouse sube y cambia de color. */
+.tarjeta {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+.tarjeta:hover {
+  background: var(--color-tarjeta-hover);
+  border-color: var(--celeste-sello);
+  box-shadow: var(--sombra-tarjeta-hover);
+  transform: translateY(-5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta:hover {
+    transform: none;
   }
 }

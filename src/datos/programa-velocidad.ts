@@ -151,7 +151,7 @@ export const seriesVelocidad: Serie[] = [
   crearSerie(
     k1500m.id,
     'eliminatoria',
-    'Eliminatoria 1',
+    'Serie A',
     'publicada',
     0,
     '09:00',
@@ -168,7 +168,7 @@ export const seriesVelocidad: Serie[] = [
   crearSerie(
     k1500m.id,
     'eliminatoria',
-    'Eliminatoria 2',
+    'Serie B',
     'publicada',
     0,
     '09:10',
@@ -185,7 +185,7 @@ export const seriesVelocidad: Serie[] = [
   crearSerie(
     k1500m.id,
     'eliminatoria',
-    'Eliminatoria 3',
+    'Serie C',
     'publicada',
     0,
     '09:20',
@@ -256,7 +256,7 @@ export const seriesVelocidad: Serie[] = [
   crearSerie(
     k1500f.id,
     'eliminatoria',
-    'Eliminatoria 1',
+    'Serie A',
     'publicada',
     0,
     '09:40',
@@ -273,7 +273,7 @@ export const seriesVelocidad: Serie[] = [
   crearSerie(
     k1500f.id,
     'eliminatoria',
-    'Eliminatoria 2',
+    'Serie B',
     'publicada',
     0,
     '09:50',
@@ -348,7 +348,7 @@ export const seriesVelocidad: Serie[] = [
   crearSerie(
     k2500.id,
     'eliminatoria',
-    'Eliminatoria 1',
+    'Serie A',
     'armada',
     0,
     '11:20',
@@ -365,7 +365,7 @@ export const seriesVelocidad: Serie[] = [
   crearSerie(
     k2500.id,
     'eliminatoria',
-    'Eliminatoria 2',
+    'Serie B',
     'armada',
     0,
     '11:30',
@@ -384,7 +384,7 @@ export const seriesVelocidad: Serie[] = [
   crearSerie(
     k1200.id,
     'eliminatoria',
-    'Eliminatoria 1',
+    'Serie A',
     'armada',
     1,
     '09:30',
@@ -401,7 +401,7 @@ export const seriesVelocidad: Serie[] = [
   crearSerie(
     k1200.id,
     'eliminatoria',
-    'Eliminatoria 2',
+    'Serie B',
     'armada',
     1,
     '09:40',

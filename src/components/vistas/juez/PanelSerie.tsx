@@ -12,11 +12,11 @@ import {
   Send,
   Trophy,
 } from 'lucide-react';
-import { Button, EstadoSerieBadge, Icon, Input, PuntoEnVivo, Select, Time } from '@/components/ds';
+import { Button, EstadoSerieBadge, Icon, Input, PuntoEnVivo, Time } from '@/components/ds';
 import { AccionNoDisponible } from '@/components/demo';
 import { configuracionFederacion } from '@/datos';
 import type { FilaResultado, SerieDetalle, SerieResumen } from '@/datos';
-import { SIGNIFICADO_CODIGO } from '@/dominio/tiempos';
+import { parsearTiempo, SIGNIFICADO_CODIGO } from '@/dominio/tiempos';
 import { rutas } from '@/lib/rutas';
 import { Barra, Etiqueta, listaDeNumeros, NumeroCarril, TarjetaJuez } from './Bloques';
 import estilos from './juez.module.css';
@@ -36,13 +36,6 @@ const COLOR_MEDALLA = {
   plata: 'var(--medalla-plata)',
   bronce: 'var(--medalla-bronce)',
 } as const;
-
-const OPCIONES_CODIGO = [
-  { value: '', label: '—' },
-  { value: 'DSQ', label: 'DSQ' },
-  { value: 'DNS', label: 'DNS' },
-  { value: 'DNF', label: 'DNF' },
-];
 
 export function PanelSerie({ serie, numero, total, siguiente }: Props) {
   return (
@@ -127,7 +120,17 @@ function Armada({ serie }: { serie: SerieDetalle }) {
   );
 }
 
+/** Posición provisoria: ordena por tiempo solo los carriles que ya tienen uno y no llevan código. */
+function posicionesProvisorias(carriles: SerieDetalle['carriles']): Map<number, number> {
+  const conTiempo = carriles
+    .filter((c) => c.tiempo && !c.codigo)
+    .map((c) => ({ numero: c.numero, cs: parsearTiempo(c.tiempo as string) }))
+    .sort((a, b) => a.cs - b.cs);
+  return new Map(conTiempo.map((c, i) => [c.numero, i + 1]));
+}
+
 function EnVivo({ serie }: { serie: SerieDetalle }) {
+  const posiciones = posicionesProvisorias(serie.carriles);
   const sinCargar = serie.carriles.filter((c) => !c.tiempo && !c.codigo).map((c) => c.numero);
   const textoFaltan =
     sinCargar.length === 0
@@ -162,7 +165,7 @@ function EnVivo({ serie }: { serie: SerieDetalle }) {
           <span className={tablas.aN}>Carril</span>
           <span className={tablas.aNom}>Deportista · club</span>
           <span className={`${tablas.aT} ${estilos.derecha}`}>Tiempo</span>
-          <span className={tablas.aC}>Código</span>
+          <span className={`${tablas.aC} ${estilos.derecha}`}>Posición</span>
         </div>
         {serie.carriles.map((c) => (
           <div key={c.numero} className={`${estilos.fila} ${tablas.carga}`}>
@@ -182,8 +185,8 @@ function EnVivo({ serie }: { serie: SerieDetalle }) {
             <div role="group" aria-label={`Tiempo del carril ${c.numero}`} className={`${tablas.aT} ${tablas.campoTiempo}`}>
               <Input soloLectura mono value={c.tiempo ?? ''} placeholder="m:ss.cc" />
             </div>
-            <div role="group" aria-label={`Código del carril ${c.numero}`} className={tablas.aC}>
-              <Select soloLectura options={OPCIONES_CODIGO} value={c.codigo ?? ''} />
+            <div aria-label={`Posición del carril ${c.numero}`} className={`${tablas.aC} ${tablas.posicionCalculada}`}>
+              {c.codigo ?? posiciones.get(c.numero) ?? '—'}
             </div>
           </div>
         ))}
@@ -239,14 +242,14 @@ function Terminada({ serie }: { serie: SerieDetalle }) {
           </span>
         </div>
       </div>
-      <TarjetaJuez etiquetaAria="Resultados calculados" titulo="Resultados para revisar" meta="Orden por tiempo">
+      <TarjetaJuez variante="revision" etiquetaAria="Resultados calculados" titulo="Resultados para revisar" meta="Orden por tiempo">
         <div className={`${estilos.encabezadoTabla} ${clase}`}>
           <span className={tablas.aPos}>Pos</span>
-          <span className={tablas.aCarril} style={{ font: 'inherit' }}>
+          <span className={tablas.aCarril} style={{ font: 'inherit', color: 'inherit' }}>
             Carril
           </span>
           <span className={tablas.aNom}>Deportista · club</span>
-          <span className={`${tablas.aT} ${estilos.derecha}`}>Tiempo · dif.</span>
+          <span className={`${tablas.aT} ${estilos.derecha}`}>Tiempo</span>
           {finales && <span className={`${tablas.aPts} ${estilos.derecha}`} style={{ font: 'inherit' }}>Pts</span>}
           <span className={tablas.aEdita} />
         </div>
@@ -337,11 +340,11 @@ function Publicada({ serie, siguiente }: { serie: SerieDetalle; siguiente: Serie
           <span className={estilos.bandaTexto}>El público ya ve posiciones y tiempos oficiales de {serie.titulo}.</span>
         </div>
       </div>
-      <TarjetaJuez etiquetaAria="Resumen" titulo="Resumen" meta={cuenta}>
+      <TarjetaJuez variante="publicada" etiquetaAria="Resumen" titulo="Resumen" meta={cuenta}>
         {(serie.esFinal || serie.fase.avanceTexto) && (
           <div
             className={estilos.avisoFila}
-            style={{ background: 'var(--color-exito-bg)', color: 'var(--color-exito)', fontSize: 16, fontWeight: 700 }}
+            style={{ background: 'transparent', color: 'var(--color-texto)', fontSize: 15, fontWeight: 600 }}
           >
             <Icon icono={serie.esFinal ? Trophy : Flag} size={20} />
             <span>{serie.esFinal ? 'Podio' : serie.fase.avanceTexto}</span>
