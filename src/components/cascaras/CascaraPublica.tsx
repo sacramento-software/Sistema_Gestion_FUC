@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { BloqueLogo } from './BloqueLogo';
 import { BotonSesion, NavEscritorio, NavInferior } from './NavPublica';
+import { OcultarEnIngreso } from './OcultarEnIngreso';
 import { PiePublico } from './PiePublico';
 import { SelectorTema } from './SelectorTema';
 import { leerTema } from '@/lib/tema';
@@ -32,7 +33,9 @@ export async function CascaraPublica({ usuario, hayEnVivo, rutaEnVivo = null, ch
         </div>
       </header>
       <main className={estilos.principal}>{children}</main>
-      <PiePublico />
+      <OcultarEnIngreso>
+        <PiePublico />
+      </OcultarEnIngreso>
       <NavInferior hayEnVivo={hayEnVivo} rutaEnVivo={rutaEnVivo} />
     </div>
   );

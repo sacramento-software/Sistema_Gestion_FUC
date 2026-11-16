@@ -12,7 +12,7 @@
   z-index: 30;
   flex: none;
   color: var(--color-texto);
-  background: color-mix(in srgb, var(--color-fondo) 62%, transparent);
+  background: color-mix(in srgb, var(--color-superficie) 78%, transparent);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-linea);
