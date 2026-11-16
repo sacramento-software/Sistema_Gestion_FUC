@@ -3,6 +3,7 @@ import { CategoryTag } from '@/components/ds';
 import { AccionNoDisponible } from '@/components/demo';
 import { BarraGestion } from '@/components/vistas/comun/BarraGestion';
 import { catalogoDeEventos } from '@/datos';
+import { sinTildes } from '@/datos/texto';
 import { CATEGORIAS } from '@/dominio/categorias';
 import { rutas } from '@/lib/rutas';
 import { armarUrl, BandaInfo, Etiqueta, Vacio } from './Bloques';
@@ -58,6 +59,9 @@ function GrupoFiltro({
   );
 }
 
+/** Compara códigos sin importar mayúsculas, espacios ni guiones: «K2 500» encuentra «K2-500». */
+const compacto = (t: string) => sinTildes(t).replace(/[\s-]+/g, '');
+
 export function Catalogo({ filtros }: { filtros: FiltrosCatalogo }) {
   const mostrarInactivos = filtros.inactivos === '1';
   const visibles = catalogoDeEventos().filter(
@@ -66,7 +70,7 @@ export function Catalogo({ filtros }: { filtros: FiltrosCatalogo }) {
       (!filtros.embarcacion || e.embarcacion === filtros.embarcacion) &&
       (!filtros.categoria || e.categoriaId === filtros.categoria) &&
       (!filtros.genero || e.genero === filtros.genero) &&
-      (!filtros.q || e.codigo.toLowerCase().includes(filtros.q.toLowerCase())),
+      (!filtros.q || compacto(e.codigo).includes(compacto(filtros.q))),
   );
 
   return (

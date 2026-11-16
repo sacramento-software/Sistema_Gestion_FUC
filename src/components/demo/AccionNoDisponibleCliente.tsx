@@ -64,12 +64,12 @@ export function AccionNoDisponibleCliente({
   const ocultar = useCallback(() => {
     limpiarTemporizador();
     setVisible(false);
+    setPosicion(null);
   }, [limpiarTemporizador]);
 
   // El globo va en un portal con posición fija: así ninguna tabla ni tarjeta con `overflow: hidden` lo recorta.
   // Arriba si entra, abajo si no, y sin salirse del ancho de pantalla.
-  useLayoutEffect(() => {
-    if (!visible) return;
+  const ubicar = useCallback(() => {
     const raiz = raizRef.current;
     const globo = globoRef.current;
     if (!raiz || !globo) return;
@@ -80,15 +80,22 @@ export function AccionNoDisponibleCliente({
     const centrado = caja.left + caja.width / 2 - globo.offsetWidth / 2;
     const left = Math.max(MARGEN, Math.min(centrado, limite - globo.offsetWidth));
     setPosicion({ top, left });
-  }, [visible]);
+  }, []);
 
-  // Al desplazarse la página el globo quedaría fuera de lugar: se oculta.
+  useLayoutEffect(() => {
+    if (visible) ubicar();
+  }, [visible, ubicar]);
+
+  // Al desplazarse la página (o girar el celular) el globo se reubica junto al botón, sin cerrarse.
   useEffect(() => {
     if (!visible) return;
-    const alDesplazar = () => ocultar();
-    window.addEventListener('scroll', alDesplazar, { passive: true, capture: true });
-    return () => window.removeEventListener('scroll', alDesplazar, true);
-  }, [visible, ocultar]);
+    window.addEventListener('scroll', ubicar, { passive: true, capture: true });
+    window.addEventListener('resize', ubicar);
+    return () => {
+      window.removeEventListener('scroll', ubicar, true);
+      window.removeEventListener('resize', ubicar);
+    };
+  }, [visible, ubicar]);
 
   // Al tocar fuera (celular) se oculta.
   useEffect(() => {
