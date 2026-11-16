@@ -21,20 +21,15 @@ export function PiePublico() {
         <div className={estilos.columnas}>
           <div className={estilos.marca}>
             <div className={estilos.sello}>
-              <Logo variante="sello" tamano={72} />
-              <span className={estilos.federacion}>
-                Federación Uruguaya
-                <br />
-                de Canotaje
-              </span>
+              <Logo variante="sello" tamano={44} />
+              <span className={estilos.federacion}>Federación Uruguaya de Canotaje</span>
             </div>
             <span className={estilos.direccion}>
-              <Icon icono={MapPin} size={18} />
+              <Icon icono={MapPin} size={16} />
               Lago Calcagno, 15000 Ciudad de la Costa, Canelones
             </span>
           </div>
-          <nav aria-label="Pie" className={estilos.columna}>
-            <span className={estilos.tituloColumna}>Competencias</span>
+          <nav aria-label="Pie" className={estilos.enlaces}>
             {ENLACES.map((e) => (
               <Link key={e.href} href={e.href} className={estilos.enlace}>
                 {e.texto}
