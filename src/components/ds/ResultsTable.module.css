@@ -198,3 +198,13 @@
   justify-self: center;
   justify-content: center;
 }
+
+/* Celular: encabezados más chicos para que no se pisen entre columnas. */
+@media (max-width: 640px) {
+  .encabezado {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+}

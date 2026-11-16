@@ -189,3 +189,18 @@
   justify-self: center;
   justify-content: center;
 }
+
+/* Celular: encabezados más chicos y columnas numéricas más anchas para que las palabras no se pisen. */
+@media (max-width: 719px) {
+  .fila {
+    grid-template-columns: 40px minmax(0, 1fr) 68px 68px;
+    gap: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .encabezado {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    overflow-wrap: normal;
+  }
+}
