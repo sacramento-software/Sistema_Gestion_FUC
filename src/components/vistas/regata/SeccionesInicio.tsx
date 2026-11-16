@@ -159,35 +159,43 @@ export function SeccionCompetencias() {
 export function SeccionResultados({ hrefTodos }: { hrefTodos: string }) {
   const finales = ultimasFinalesPublicadas(3);
   if (finales.length === 0) return null;
+  const competencia = listarCompetencias().find((c) => c.id === finales[0].competenciaId);
+  const rotulo = competencia
+    ? `${competencia.nombre} ${competencia.fechaInicio.slice(0, 4)} · Finales`
+    : 'Finales';
   return (
     <section aria-labelledby="titulo-resultados" className={cx(estilos.seccion, estilos.fondoAlterno)}>
       <div className={estilos.interior}>
         <div className={estilos.cabecera}>
           <div className={estilos.bloqueTitulo}>
-            <span className={estilos.rotuloSeccion}>Resultados publicados</span>
+            <span className={estilos.rotuloResultados}>{rotulo}</span>
             <div id="titulo-resultados">
-              <TituloSeccion>Últimas finales</TituloSeccion>
+              <TituloSeccion>Resultados</TituloSeccion>
             </div>
           </div>
           <EnlaceFlecha href={hrefTodos}>Todos los resultados</EnlaceFlecha>
         </div>
         <div className={estilos.gridFinales}>
           {finales.map((serie) => (
-            <Link key={serie.id} href={rutas.serie(serie.competenciaId, serie.id)} className={estilos.tarjetaFinal}>
+            <div key={serie.id} className={estilos.tarjetaFinal}>
               <Filete />
-              <div className={estilos.cabeceraFinal}>
+              <Link href={rutas.serie(serie.competenciaId, serie.id)} className={estilos.cabeceraFinal}>
                 <span className={estilos.tituloFinal}>{serie.titulo}</span>
                 <span className={estilos.subtituloFinal}>
                   {serie.categoriaGenero} · {serie.horaTexto}
                 </span>
-              </div>
+              </Link>
               <div className={estilos.encabezadoFinal} aria-hidden="true">
                 <span>POS</span>
                 <span>DEPORTISTA · CLUB</span>
                 <span>TIEMPO</span>
               </div>
               {(serie.resultados ?? []).slice(0, 3).map((fila) => (
-                <div key={fila.carril} className={estilos.filaFinal}>
+                <Link
+                  key={fila.carril}
+                  href={rutas.serie(serie.competenciaId, serie.id)}
+                  className={estilos.filaFinal}
+                >
                   <span className={estilos.posicion}>
                     <Medalla medalla={fila.medalla} />
                     {fila.posicion ?? '—'}
@@ -197,9 +205,9 @@ export function SeccionResultados({ hrefTodos }: { hrefTodos: string }) {
                     <span className={estilos.clubFinal}>{fila.bote.clubNombre}</span>
                   </span>
                   <Time valor={fila.tiempo ?? fila.codigo ?? '—'} diferencia={fila.diferencia ?? undefined} />
-                </div>
+                </Link>
               ))}
-            </Link>
+            </div>
           ))}
         </div>
       </div>
@@ -241,10 +249,34 @@ export function SeccionNoticias() {
 }
 
 const DISCIPLINAS = [
-  { foto: '/imagenes/k4-dorsales.jpg', alt: 'K4 con dorsales', nombre: 'Velocidad', desc: '200, 500 y 1000 m en pista' },
-  { foto: '/imagenes/canotaje5.jpg', alt: 'Palistas en recorrido largo', nombre: 'Maratón', desc: 'Larga distancia con porteos' },
-  { foto: '/imagenes/lago-calcagno.jpg', alt: 'Lago Calcagno', nombre: 'Canoa turismo', desc: 'Travesías por ríos y costa' },
-  { foto: '/imagenes/canotaje4.jpg', alt: 'Escuela de kayak', nombre: 'Escuelas', desc: 'Primeras remadas, todas las edades' },
+  {
+    foto: '/imagenes/canotaje6.jpg',
+    alt: 'K4 de palistas en plena palada durante una regata',
+    nombre: 'Velocidad',
+    desc: 'Carreras en aguas planas sobre pista balizada, con salida en carriles y llegada por décimas. Es la base del calendario nacional y de la selección.',
+    datos: ['200 m', '500 m', '1000 m', 'K1 · K2 · K4 · C1 · C2'],
+  },
+  {
+    foto: '/imagenes/canotaje5.jpg',
+    alt: 'Palistas remando en una prueba de larga distancia',
+    nombre: 'Maratón',
+    desc: 'Pruebas de resistencia en circuitos largos de ida y vuelta, con porteos entre tramos. Se corre en equipo y exige estrategia tanto como fondo.',
+    datos: ['Larga distancia', 'Porteos', 'Individual y por equipos'],
+  },
+  {
+    foto: '/imagenes/lago-calcagno.jpg',
+    alt: 'Lago Calcagno con kayaks amarillos junto al muelle',
+    nombre: 'Canoa turismo',
+    desc: 'Travesías recreativas por ríos, lagos y costa, sin competencia. Una forma de conocer el territorio remando, con salidas guiadas desde los clubes.',
+    datos: ['Salidas guiadas', 'Ríos y costa', 'Sin competencia'],
+  },
+  {
+    foto: '/imagenes/canotaje4.jpg',
+    alt: 'Niña en kayak naranja durante una clase de escuela',
+    nombre: 'Escuelas',
+    desc: 'Programas de iniciación para niñas, niños y adultos: seguridad en el agua, técnica de palada y primeras regatas amistosas en cada club.',
+    datos: ['Todas las edades', 'Equipo provisto', 'Primeras remadas'],
+  },
 ] as const;
 
 /** Las cuatro disciplinas: informativas, sin enlace (no hay páginas de disciplinas). */
@@ -262,12 +294,26 @@ export function SeccionDisciplinas() {
           {DISCIPLINAS.map((d) => (
             <div key={d.nombre} className={estilos.disciplina}>
               <div className={estilos.fotoDisciplina}>
-                <Image src={d.foto} alt={d.alt} fill sizes="(min-width: 1100px) 25vw, 50vw" className={estilos.imagen} />
+                <Image
+                  src={d.foto}
+                  alt={d.alt}
+                  fill
+                  quality={90}
+                  sizes="(min-width: 1100px) 600px, (min-width: 640px) 50vw, 100vw"
+                  className={estilos.imagen}
+                />
               </div>
               <Filete />
               <div className={estilos.textosDisciplina}>
                 <span className={estilos.nombreDisciplina}>{d.nombre}</span>
-                <span className={estilos.descDisciplina}>{d.desc}</span>
+                <p className={estilos.descDisciplina}>{d.desc}</p>
+                <ul className={estilos.datosDisciplina}>
+                  {d.datos.map((t) => (
+                    <li key={t} className={estilos.datoDisciplina}>
+                      {t}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

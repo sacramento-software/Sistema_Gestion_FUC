@@ -10,9 +10,10 @@ import { IconButton } from '@/components/ds/IconButton';
 import estilos from './Portada.module.css';
 
 const FOTOS = [
-  { src: '/imagenes/canotaje7.jpg', alt: 'Palista en K1 durante una regata', pie: 'Velocidad · K1', posicion: '50% 40%' },
-  { src: '/imagenes/lago-calcagno.jpg', alt: 'Lago Calcagno', pie: 'Lago Calcagno · Ciudad de la Costa', posicion: '50% 60%' },
-  { src: '/imagenes/canotaje4.jpg', alt: 'Palistas jóvenes en kayak', pie: 'Escuelas de kayak', posicion: '50% 55%' },
+  { src: '/imagenes/fuc3.jpg', alt: 'Palistas en K1 levantando agua durante una regata', pie: 'Velocidad · K1', posicion: '60% 45%' },
+  { src: '/imagenes/kayak1.jpg', alt: 'Palista en C1 durante la largada de una regata', pie: 'Velocidad · C1', posicion: '50% 45%' },
+  { src: '/imagenes/kayak2.jpg', alt: 'Palistas en K1 durante la largada de una regata', pie: 'Velocidad · K1', posicion: '50% 50%' },
+  { src: '/imagenes/fuc6.jpg', alt: 'Bote de K2 femenino en plena palada', pie: 'Velocidad · K2', posicion: '60% 45%' },
 ] as const;
 
 const INTERVALO_MS = 7000;
@@ -45,7 +46,7 @@ export function Portada({ proxima, resultados }: PortadaProps) {
   const ir = useCallback((i: number) => setActual((i + FOTOS.length) % FOTOS.length), []);
 
   useEffect(() => {
-    if (pausa || sinMovimiento) return;
+    if (pausa || sinMovimiento || FOTOS.length < 2) return;
     const t = setTimeout(() => ir(actual + 1), INTERVALO_MS);
     return () => clearTimeout(t);
   }, [actual, pausa, sinMovimiento, ir]);
@@ -87,12 +88,20 @@ export function Portada({ proxima, resultados }: PortadaProps) {
             className={estilos.sello}
           />
           <span className={estilos.linea} />
-          <span className={estilos.federacion}>Federación Uruguaya de Canotaje</span>
+          <span className={estilos.federacion}>
+            Federación Uruguaya
+            <br />
+            de Canotaje
+          </span>
         </div>
-        <h1 className={estilos.titulo}>Bienvenido al sitio oficial</h1>
+        <h1 className={estilos.titulo}>
+          Bienvenido
+          <br />
+          al sitio oficial
+        </h1>
         <p className={estilos.bajada}>
           Conocé más sobre el canotaje en Uruguay y seguí las noticias y los resultados de cada competencia. Con tu usuario,
-          ingresá a la plataforma para inscribir a tu club o cargar tiempos como juez.
+          ingresá a la plataforma para inscribir a tu club, cargar tiempos como juez o consultar tu ficha de deportista.
         </p>
         {accesos.length > 0 && (
           <div className={estilos.accesos}>
@@ -110,29 +119,35 @@ export function Portada({ proxima, resultados }: PortadaProps) {
       </div>
 
       <div className={estilos.controles}>
-        <div className={estilos.puntos} role="group" aria-label="Fotos de portada">
-          {FOTOS.map((foto, i) => (
-            <button
-              key={foto.src}
-              type="button"
-              aria-label={`Foto ${i + 1}: ${foto.pie}`}
-              aria-current={i === actual ? 'true' : undefined}
-              className={estilos.punto}
-              onClick={() => ir(i)}
-            >
-              <span className={cx(estilos.barra, i === actual && estilos.barraActual)} />
-            </button>
-          ))}
-        </div>
+        {FOTOS.length > 1 && (
+          <div className={estilos.puntos} role="group" aria-label="Fotos de portada">
+            {FOTOS.map((foto, i) => (
+              <button
+                key={foto.src}
+                type="button"
+                aria-label={`Foto ${i + 1}: ${foto.pie}`}
+                aria-current={i === actual ? 'true' : undefined}
+                className={estilos.punto}
+                onClick={() => ir(i)}
+              >
+                <span className={cx(estilos.barra, i === actual && estilos.barraActual)} />
+              </button>
+            ))}
+          </div>
+        )}
         <span className={estilos.pie}>{FOTOS[actual].pie}</span>
         <span className={estilos.espacio} />
-        <span className={estilos.contador} aria-live="off">
-          {String(actual + 1).padStart(2, '0')} / {String(FOTOS.length).padStart(2, '0')}
-        </span>
-        <div className={estilos.flechas}>
-          <IconButton icon={ChevronLeft} label="Foto anterior" onClick={() => ir(actual - 1)} />
-          <IconButton icon={ChevronRight} label="Foto siguiente" onClick={() => ir(actual + 1)} />
-        </div>
+        {FOTOS.length > 1 && (
+          <>
+            <span className={estilos.contador} aria-live="off">
+              {String(actual + 1).padStart(2, '0')} / {String(FOTOS.length).padStart(2, '0')}
+            </span>
+            <div className={estilos.flechas}>
+              <IconButton icon={ChevronLeft} label="Foto anterior" onClick={() => ir(actual - 1)} />
+              <IconButton icon={ChevronRight} label="Foto siguiente" onClick={() => ir(actual + 1)} />
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

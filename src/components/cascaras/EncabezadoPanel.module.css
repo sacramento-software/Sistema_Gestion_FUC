@@ -9,7 +9,20 @@
   margin: calc(var(--panel-padding, 0px) * -1) calc(var(--panel-padding, 0px) * -1) var(--panel-padding, 0px);
   padding: 12px var(--panel-padding, 16px);
   background: var(--color-hero-bg);
-  border-bottom: 1px solid color-mix(in srgb, var(--celeste-sello) 70%, transparent);
+  position: relative;
+}
+
+/* Línea inferior que corta en diagonal poco después del texto, en vez de ocupar todo el ancho. */
+.banda::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(100%, 460px);
+  height: 4px;
+  background: color-mix(in srgb, var(--celeste-sello) 70%, transparent);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
+  pointer-events: none;
 }
 
 .textos {

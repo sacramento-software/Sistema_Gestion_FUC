@@ -10,15 +10,20 @@ import disposicion from './disposicion.module.css';
 export function ListaSeries({ series, activaId }: { series: SerieResumen[]; activaId: string }) {
   const publicadas = series.filter((s) => s.estado === 'publicada').length;
   return (
-    <section aria-label="Series del día" className={estilos.tarjeta}>
+    <section aria-label="Series del evento" className={estilos.tarjeta}>
       <Filete />
       <div className={estilos.tarjetaCabecera} style={{ flexDirection: 'column', alignItems: 'flex-start', padding: 16 }}>
         <h3 className={estilos.tarjetaTitulo} style={{ fontSize: 20 }}>
-          Series del día
+          Series del evento
         </h3>
         <Etiqueta>
           {publicadas} de {series.length} publicadas
         </Etiqueta>
+      </div>
+      <div className={`${estilos.encabezadoTabla} ${disposicion.cabeceraLista}`} style={{ paddingInline: 16 }}>
+        <span>Hora</span>
+        <span>Serie</span>
+        <span>Estado</span>
       </div>
       <ol className={disposicion.listaSeries}>
         {series.map((s) => {

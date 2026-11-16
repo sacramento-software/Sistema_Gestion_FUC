@@ -15,6 +15,13 @@
   border-bottom: 1px solid var(--color-linea);
 }
 
+/* Modo claro: barra más transparente, con desenfoque para que el contenido siga legible. */
+:global(:root:not([data-theme="noche"])) .barra {
+  background: color-mix(in srgb, var(--color-superficie) 50%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
 .franja {
   height: 4px;
   background: var(--celeste-sello);

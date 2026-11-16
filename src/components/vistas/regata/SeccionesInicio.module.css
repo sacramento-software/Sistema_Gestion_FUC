@@ -308,8 +308,14 @@
 /* Resultados */
 .gridFinales {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: 28px;
+}
+.rotuloResultados {
+  font: 500 13px/1.4 var(--font-mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-texto-sec);
 }
 .tarjetaFinal {
   display: flex;
@@ -317,34 +323,36 @@
   overflow: hidden;
   color: var(--color-texto);
   text-decoration: none;
-  background: var(--color-fondo);
+  background: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
   border: 1px solid var(--color-linea);
   border-radius: 16px;
   transition: border-color 120ms;
 }
 .tarjetaFinal:hover {
-  color: var(--color-texto);
   border-color: var(--color-accion);
 }
 .cabeceraFinal {
+  color: var(--color-texto);
+  text-decoration: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 22px 24px 18px;
+  gap: 10px;
+  padding: 24px 24px 20px;
 }
 .tituloFinal {
-  font: 600 28px/1 var(--font-titulo);
+  font: 600 26px/1.1 var(--font-titulo);
 }
 .subtituloFinal {
-  font: 700 13px/1.3 var(--font-cuerpo);
-  letter-spacing: 0.16em;
+  font: 500 13px/1.3 var(--font-mono);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-texto);
+  color: var(--color-texto-sec);
 }
 .encabezadoFinal,
 .filaFinal {
   display: grid;
-  grid-template-columns: 56px minmax(0, 1fr) auto;
+  grid-template-columns: 58px minmax(0, 1fr) auto;
   padding: 0 24px;
 }
 .encabezadoFinal {
@@ -359,11 +367,30 @@
 }
 .filaFinal {
   align-items: center;
-  min-height: 68px;
+  min-height: 70px;
+  color: var(--color-texto);
+  text-decoration: none;
+  transition: background-color 120ms, box-shadow 120ms;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-top: 1px solid var(--color-linea-suave);
 }
 .encabezadoFinal + .filaFinal {
   border-top: 0;
+}
+.filaFinal:hover,
+.filaFinal:focus-visible {
+  color: var(--color-texto);
+  background: var(--color-superficie-2);
+  box-shadow: inset 4px 0 0 var(--color-accion);
+  outline: none;
+}
+.cabeceraFinal:hover .tituloFinal {
+  color: var(--color-accion);
+}
+.cabeceraFinal:focus-visible {
+  outline: 2px solid var(--color-accion);
+  outline-offset: -2px;
 }
 .posicion {
   display: flex;
@@ -379,11 +406,11 @@
   min-width: 0;
 }
 .nombreFinal {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
 }
 .clubFinal {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--color-texto-sec);
 }
 
@@ -442,8 +469,13 @@
 /* Disciplinas */
 .gridDisciplinas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+@media (max-width: 700px) {
+  .gridDisciplinas {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .disciplina {
   display: flex;
@@ -452,23 +484,57 @@
   background: var(--color-fondo);
   border: 1px solid var(--color-linea);
   border-radius: 16px;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+.disciplina:hover {
+  border-color: var(--celeste-sello);
+  box-shadow: var(--sombra-tarjeta-hover);
+  transform: translateY(-4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .disciplina:hover {
+    transform: none;
+  }
 }
 .fotoDisciplina {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 2;
 }
 .textosDisciplina {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 20px 22px;
+  gap: 10px;
+  padding: 22px 26px 26px;
 }
 .nombreDisciplina {
-  font: 600 28px/1 var(--font-titulo);
+  font: 600 clamp(28px, 2.4vw, 34px) / 1.05 var(--font-titulo);
 }
 .descDisciplina {
-  font-size: 14px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--color-texto-sec);
+  text-wrap: pretty;
+}
+.datosDisciplina {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.datoDisciplina {
+  padding: 6px 12px;
+  font: 500 12px/1 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accion);
+  border: 1px solid var(--color-linea);
+  border-radius: 999px;
 }
 
 /* Tarjeta suelta: al pasar el mouse sube y cambia de color. */
@@ -509,4 +575,16 @@
   .destacada:hover {
     transform: none;
   }
+}
+
+/* Encabezado de columnas: texto siempre centrado */
+.encabezadoFinal {
+  text-align: center;
+  justify-items: center;
+}
+.encabezadoFinal > *,
+.encabezadoFinal > .derecha {
+  text-align: center;
+  justify-self: center;
+  justify-content: center;
 }

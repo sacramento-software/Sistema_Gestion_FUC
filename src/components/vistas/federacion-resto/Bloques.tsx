@@ -12,18 +12,25 @@ interface TarjetaProps {
   meta?: ReactNode;
   /** Nivel del título (2 por defecto; 3 dentro de una sección con h2). */
   nivel?: 2 | 3;
+  /** Acciones arriba a la derecha (por ejemplo, «Editar»). */
+  acciones?: ReactNode;
   children: ReactNode;
 }
 
 /** Tarjeta con borde, radio de tarjeta y filete doble. */
-export function Tarjeta({ titulo, meta, nivel = 2, children }: TarjetaProps) {
+export function Tarjeta({ titulo, meta, nivel = 2, acciones, children }: TarjetaProps) {
   const Titulo = nivel === 2 ? 'h2' : 'h3';
   return (
     <section aria-label={titulo} className={estilos.tarjeta}>
       <Filete />
       <div className={estilos.tarjetaCabecera}>
         <Titulo className={estilos.tarjetaTitulo}>{titulo}</Titulo>
-        {meta && <Etiqueta>{meta}</Etiqueta>}
+        {(meta || acciones) && (
+          <div className={estilos.tarjetaLado}>
+            {meta && <Etiqueta>{meta}</Etiqueta>}
+            {acciones}
+          </div>
+        )}
       </div>
       {children}
     </section>

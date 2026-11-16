@@ -37,7 +37,7 @@ export function ListaCompetencias({ estado, texto }: { estado?: string; texto?: 
         ))}
       </nav>
 
-      <section aria-label="Competencias" className={estilos.tarjeta}>
+      <section aria-label="Competencias" className={`${estilos.tarjeta} ${estilos.tarjetaTabla}`}>
         {visibles.length === 0 ? (
           <Vacio>No hay competencias con este estado.</Vacio>
         ) : (

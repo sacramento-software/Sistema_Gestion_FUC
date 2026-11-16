@@ -10,10 +10,10 @@ import {
 import estilos from '@/components/vistas/federacion-resto/federacion-resto.module.css';
 import { listarClubes, listarCompetencias, listarDeportistas } from '@/datos';
 import { botesTemporadasAnteriores } from '@/datos/extra/08-federacion-resto';
-import { anioTemporada, hoyISO } from '@/dominio';
+import { anioTemporada, hoyDemoISO } from '@/dominio';
 
 export default function EstadisticasPage() {
-  const anio = anioTemporada(hoyISO());
+  const anio = anioTemporada(hoyDemoISO());
   const sexo = deportistasPorSexo();
 
   // Las cuatro temporadas anteriores son datos propios; la actual se calcula.

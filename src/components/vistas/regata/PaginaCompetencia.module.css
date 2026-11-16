@@ -375,3 +375,9 @@
     gap: 24px;
   }
 }
+
+/* Franja alterna en las filas de tabla. */
+.filaPrograma:nth-child(even):not(:hover),
+.filaPodio:nth-child(even):not(:hover) {
+  background: var(--color-fila-par);
+}

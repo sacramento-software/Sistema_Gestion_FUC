@@ -63,6 +63,16 @@
 .primario:hover {
   background: var(--celeste-boton-hover);
 }
+/* Más ajustado al texto: menos relleno lateral y menos separación del ícono. */
+.primario.md {
+  height: 44px;
+  padding: 0 14px;
+  gap: 6px;
+}
+.primario.sm {
+  padding: 0 12px;
+  gap: 6px;
+}
 
 .secundario {
   color: var(--celeste-boton);

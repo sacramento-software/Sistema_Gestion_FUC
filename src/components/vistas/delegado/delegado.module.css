@@ -470,9 +470,42 @@
     display: grid;
     padding: 10px 20px;
     border-top: 1px solid var(--color-linea);
-    font: 700 15px/1 var(--font-titulo);
+    font: 700 17px/1 var(--font-titulo);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-texto);
   }
+}
+
+/* Estilo de tabla unificado: filas definidas, sombra propia y línea de color bajo el encabezado. */
+.filaDeportista {
+  border-top: 1px solid var(--color-linea);
+  transition: background-color 0.15s ease;
+}
+.filaDeportista:nth-child(even):not(.filaVencida) {
+  background: var(--color-fila-par);
+}
+.filaDeportista:hover:not(.filaVencida) {
+  background: color-mix(in srgb, var(--celeste-sello) 10%, var(--color-superficie));
+}
+@media (min-width: 900px) {
+  .encabezadoTabla {
+    padding: 18px 20px;
+    border-top: 0;
+    border-bottom: 3px solid var(--celeste-boton);
+    letter-spacing: 0.1em;
+    background: color-mix(in srgb, var(--celeste-sello) 9%, var(--color-superficie));
+  }
+}
+
+/* Encabezado de columnas: texto siempre centrado */
+.encabezadoTabla {
+  text-align: center;
+  justify-items: center;
+}
+.encabezadoTabla > *,
+.encabezadoTabla > .derecha {
+  text-align: center;
+  justify-self: center;
+  justify-content: center;
 }

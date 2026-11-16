@@ -508,7 +508,7 @@ a.filaTabla:hover {
     padding: 10px 20px;
     border-top: 1px solid var(--color-linea);
     border-bottom: 1px solid var(--color-linea);
-    font: 700 15px/1 var(--font-titulo);
+    font: 700 17px/1 var(--font-titulo);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-texto);
@@ -529,27 +529,63 @@ a.filaTabla:hover {
 
   /* Columnas de cada tabla */
   .tablaCompetencias {
-    grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.6fr) minmax(0, 1.3fr) 72px minmax(0, 1.6fr) minmax(0, 1.4fr);
+    grid-template-columns: minmax(0, 3.2fr) minmax(0, 1.6fr) minmax(0, 1.4fr) 96px minmax(0, 1.6fr) minmax(0, 1.4fr);
   }
 
   .tablaCatalogo {
     grid-template-columns: minmax(0, 2fr) minmax(0, 2.4fr) minmax(0, 1.2fr) 110px 56px;
   }
 
-  /* Prueba de estilo en el catálogo: encabezado en la tipografía de los títulos, en negrita y con más aire. */
-  .tablaCatalogo {
+  /* Encabezado en la tipografía de los títulos, en negrita y con más aire (catálogo y competencias). */
+  .tablaCatalogo,
+  .tablaCompetencias {
     column-gap: 32px;
     padding-left: 28px;
     padding-right: 28px;
   }
-  .encabezadoTabla.tablaCatalogo {
+  .encabezadoTabla.tablaCatalogo,
+  .encabezadoTabla.tablaCompetencias {
     padding-top: 22px;
     padding-bottom: 22px;
-    font: 700 15px/1 var(--font-titulo);
-    letter-spacing: 0.12em;
+    font: 700 17px/1 var(--font-titulo);
+    letter-spacing: 0.1em;
   }
-  .filaTabla.tablaCatalogo {
+  .filaTabla.tablaCatalogo,
+  .filaTabla.tablaCompetencias {
     min-height: 76px;
+  }
+}
+
+/* Tabla de competencias: filas bien definidas, sombra propia y línea de color bajo el encabezado. */
+.tarjetaTabla {
+  overflow: hidden;
+  border: 1px solid var(--color-linea);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(15, 34, 54, 0.06),
+    0 12px 32px -8px rgba(20, 40, 75, 0.22);
+}
+
+.tarjetaTabla .filaTabla {
+  border-top: 1px solid var(--color-linea);
+  box-shadow: inset 3px 0 0 transparent;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.tarjetaTabla .filaTabla:nth-of-type(even) {
+  background: var(--color-fila-par);
+}
+.tarjetaTabla .filaTabla:hover {
+  background: color-mix(in srgb, var(--celeste-sello) 10%, var(--color-superficie));
+  box-shadow: inset 3px 0 0 var(--celeste-boton);
+}
+
+@media (min-width: 900px) {
+  .tarjetaTabla .encabezadoTabla {
+    border-top: 0;
+    border-bottom: 3px solid var(--celeste-boton);
+    background: color-mix(in srgb, var(--celeste-sello) 9%, var(--color-superficie));
   }
 }
 
@@ -581,4 +617,24 @@ a.filaTabla:hover {
 
 .filaTabla:hover {
   background: var(--color-fila-hover);
+}
+
+/* Franja alterna en todas las filas de tabla. */
+.filaTabla:nth-child(even):not(:hover),
+.faseFila:nth-child(even):not(:hover),
+.boteFila:nth-child(even):not(:hover),
+.resultadoFila:nth-child(even):not(:hover) {
+  background: var(--color-fila-par);
+}
+
+/* Encabezado de columnas: texto siempre centrado */
+.encabezadoTabla {
+  text-align: center;
+  justify-items: center;
+}
+.encabezadoTabla > *,
+.encabezadoTabla > .derecha {
+  text-align: center;
+  justify-self: center;
+  justify-content: center;
 }

@@ -15,8 +15,8 @@
   /* Base: marca (solo gráfico) */
   --celeste-sello: #4C9BD3;
   /* Azul opaco para botones de alta y detalle (texto blanco) */
-  --celeste-boton: #33608F;
-  --celeste-boton-hover: #274E76;
+  --celeste-boton: #14284B;
+  --celeste-boton-hover: #1D3560;
   --amarillo-sello: #E8B320;
   /* Base: neutros */
   --blanco: #FFFFFF;
@@ -63,6 +63,8 @@
   --color-tarjeta: rgba(255, 255, 255, 0.72);
   --color-tarjeta-banda: #D3DDE9;
   --color-fila-hover: rgba(11, 74, 133, 0.09);
+  /* Franja alterna de las tablas: la fila impar queda blanca y la par apenas más oscura. */
+  --color-fila-par: rgba(11, 74, 133, 0.06);
   --sombra-tarjeta: 0 2px 4px rgba(15, 34, 54, 0.08), 0 14px 28px -10px rgba(15, 34, 54, 0.28);
   --sombra-tarjeta-hover: 0 4px 8px rgba(15, 34, 54, 0.12), 0 22px 36px -12px rgba(15, 34, 54, 0.4);
   --color-tarjeta-hover: color-mix(in srgb, var(--celeste-sello) 22%, var(--color-superficie));
@@ -108,9 +110,13 @@
   --color-filete-1: var(--azul-300);
   --color-filete-2: var(--celeste-sello);
   --color-hero-bg: var(--marino-850);
+  /* En modo noche marino-900 se pierde contra el fondo: se usa un azul más claro. */
+  --celeste-boton: #3D5F89;
+  --celeste-boton-hover: #4A6F9C;
   --color-tarjeta: rgba(255, 255, 255, 0.05);
   --color-tarjeta-banda: rgba(255, 255, 255, 0.11);
   --color-fila-hover: rgba(255, 255, 255, 0.08);
+  --color-fila-par: rgba(255, 255, 255, 0.04);
   --sombra-tarjeta: 0 2px 4px rgba(0, 0, 0, 0.35), 0 14px 28px -10px rgba(0, 0, 0, 0.6);
   --sombra-tarjeta-hover: 0 4px 8px rgba(0, 0, 0, 0.4), 0 22px 36px -12px rgba(0, 0, 0, 0.7);
   --color-tarjeta-hover: rgba(255, 255, 255, 0.11);

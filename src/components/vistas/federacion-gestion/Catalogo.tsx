@@ -114,7 +114,7 @@ export function Catalogo({ filtros }: { filtros: FiltrosCatalogo }) {
         </div>
       </section>
 
-      <section aria-label="Eventos del catálogo" className={estilos.tarjeta}>
+      <section aria-label="Eventos del catálogo" className={`${estilos.tarjeta} ${estilos.tarjetaTabla}`}>
         {visibles.length === 0 ? (
           <Vacio>No hay eventos del catálogo con estos filtros.</Vacio>
         ) : (

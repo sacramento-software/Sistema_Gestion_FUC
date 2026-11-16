@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FileUp, Pencil, Search, UserPlus } from 'lucide-react';
+import { FileDown, Pencil, Search, UserPlus } from 'lucide-react';
 import { EncabezadoPanel } from '@/components/cascaras';
 import { Button } from '@/components/ds';
 import { AccionNoDisponible } from '@/components/demo';
@@ -130,9 +130,7 @@ export default async function DeportistasDelegadoPage({
           </nav>
           <div className={estilos.altaFiltros}>
             <AccionNoDisponible icon={UserPlus}>Agregar deportista</AccionNoDisponible>
-            <AccionNoDisponible variant="secundario" icon={FileUp}>
-              Importar planilla
-            </AccionNoDisponible>
+            <AccionNoDisponible icon={FileDown}>Exportar plantilla</AccionNoDisponible>
           </div>
         </div>
 

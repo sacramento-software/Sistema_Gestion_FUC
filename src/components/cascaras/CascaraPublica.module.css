@@ -18,6 +18,11 @@
   border-bottom: 1px solid var(--color-linea);
 }
 
+/* Modo claro: encabezado más transparente. */
+:global(:root:not([data-theme="noche"])) .encabezado {
+  background: color-mix(in srgb, var(--color-superficie) 45%, transparent);
+}
+
 .franja {
   height: 4px;
   background: var(--celeste-sello);

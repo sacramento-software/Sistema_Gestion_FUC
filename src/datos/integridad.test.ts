@@ -412,7 +412,7 @@ describe('datos fijos de la spec', () => {
 
   it('las eliminatorias de K2 500 m Junior Femenino tienen los 14 botes de J2b', () => {
     const botes = (id: string) => carrilesDe(id).map((c) => c.deportistas.join('+'));
-    expect(botes('vel-k2-500-junior-f-eliminatoria-1')).toEqual([
+    expect(botes('vel-k2-500-junior-f-serie-a')).toEqual([
       'valentina-rios+camila-suarez',
       'agustina-silva+florencia-nunez',
       'delfina-arias+bianca-sosa',
@@ -421,7 +421,7 @@ describe('datos fijos de la spec', () => {
       'victoria-pereyra+renata-olivera',
       'lucia-mendez+sofia-cabrera',
     ]);
-    expect(botes('vel-k2-500-junior-f-eliminatoria-2')).toEqual([
+    expect(botes('vel-k2-500-junior-f-serie-b')).toEqual([
       'paula-gomez+micaela-duarte',
       'martina-acosta+julieta-ferreira',
       'emilia-castro+josefina-bentancor',
@@ -438,29 +438,29 @@ describe('datos fijos de la spec', () => {
       .sort((a, b) => a.hora.localeCompare(b.hora))
       .map((s) => [s.hora, s.id, s.estado, s.publicada ?? null]);
     expect(hoy).toEqual([
-      ['09:00', 'vel-k1-500-senior-m-eliminatoria-1', 'publicada', '09:14'],
-      ['09:10', 'vel-k1-500-senior-m-eliminatoria-2', 'publicada', '09:24'],
-      ['09:20', 'vel-k1-500-senior-m-eliminatoria-3', 'publicada', '09:36'],
+      ['09:00', 'vel-k1-500-senior-m-serie-a', 'publicada', '09:14'],
+      ['09:10', 'vel-k1-500-senior-m-serie-b', 'publicada', '09:24'],
+      ['09:20', 'vel-k1-500-senior-m-serie-c', 'publicada', '09:36'],
       ['09:30', 'vel-c1-200-junior-m-final-a', 'publicada', '09:42'],
-      ['09:40', 'vel-k1-500-senior-f-eliminatoria-1', 'publicada', '09:55'],
-      ['09:50', 'vel-k1-500-senior-f-eliminatoria-2', 'publicada', '10:04'],
+      ['09:40', 'vel-k1-500-senior-f-serie-a', 'publicada', '09:55'],
+      ['09:50', 'vel-k1-500-senior-f-serie-b', 'publicada', '10:04'],
       ['10:00', 'vel-k4-500-senior-m-final-a', 'publicada', '10:15'],
       ['10:10', 'vel-k1-500-senior-m-repechaje', 'terminada', null],
       ['10:40', 'vel-k1-500-senior-m-semifinal-1', 'en-vivo', null],
       ['10:50', 'vel-k1-500-senior-m-semifinal-2', 'armada', null],
       ['11:00', 'vel-k1-500-senior-f-final-a', 'armada', null],
-      ['11:20', 'vel-k2-500-junior-f-eliminatoria-1', 'armada', null],
-      ['11:30', 'vel-k2-500-junior-f-eliminatoria-2', 'armada', null],
+      ['11:20', 'vel-k2-500-junior-f-serie-a', 'armada', null],
+      ['11:30', 'vel-k2-500-junior-f-serie-b', 'armada', null],
     ]);
   });
 
   it('la eliminatoria 3 tiene un DSQ y la 2 femenina un DNS, con sus motivos', () => {
     const codigoDe = (serieId: string) =>
       carrilesDe(serieId).flatMap((c) => (c.resultado && 'codigo' in c.resultado ? [{ carril: c.numero, ...c.resultado }] : []));
-    expect(codigoDe('vel-k1-500-senior-m-eliminatoria-3')).toEqual([
+    expect(codigoDe('vel-k1-500-senior-m-serie-c')).toEqual([
       { carril: 5, codigo: 'DSQ', motivo: 'Invadió otro carril', detalle: 'Carril 5, después de los 250 m' },
     ]);
-    expect(codigoDe('vel-k1-500-senior-f-eliminatoria-2')).toEqual([
+    expect(codigoDe('vel-k1-500-senior-f-serie-b')).toEqual([
       { carril: 6, codigo: 'DNS', motivo: 'No se presentó a la largada' },
     ]);
   });
@@ -468,8 +468,8 @@ describe('datos fijos de la spec', () => {
   it('mañana: dos eliminatorias armadas y tres finales sin series', () => {
     const manana = series.filter((s) => s.dia === 1 && fasePorId.get(s.faseId)!.eventoId.startsWith('vel-'));
     expect(manana.map((s) => [s.hora, s.id, s.estado])).toEqual([
-      ['09:30', 'vel-k1-200-junior-m-eliminatoria-1', 'armada'],
-      ['09:40', 'vel-k1-200-junior-m-eliminatoria-2', 'armada'],
+      ['09:30', 'vel-k1-200-junior-m-serie-a', 'armada'],
+      ['09:40', 'vel-k1-200-junior-m-serie-b', 'armada'],
     ]);
     const previstas = fases
       .filter((f) => f.tipo === 'final' && f.dia === 1 && f.eventoId.startsWith('vel-') && seriesDeFase(f.id).length === 0)
