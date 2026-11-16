@@ -45,8 +45,8 @@
 
 .encabezado {
   padding: 10px 20px;
-  font: 700 12px/1 var(--font-cuerpo);
-  letter-spacing: 0.16em;
+  font: 700 15px/1 var(--font-titulo);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-texto);
   border-bottom: 1px solid var(--color-linea);
@@ -105,6 +105,9 @@
   min-height: 56px;
   padding: 10px 0;
   border-bottom: 1px solid var(--color-linea);
+}
+.filaCompacta:hover {
+  background: var(--color-fila-hover);
 }
 .resaltadaCompacta {
   padding-left: 10px;

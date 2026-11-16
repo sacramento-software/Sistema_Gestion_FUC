@@ -133,8 +133,8 @@ a.fila:hover {
 .encabezadoTabla {
   display: grid;
   padding: 12px 0 8px;
-  font: 700 12px/1 var(--font-cuerpo);
-  letter-spacing: 0.16em;
+  font: 700 15px/1 var(--font-titulo);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-texto);
 }
