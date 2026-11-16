@@ -8,7 +8,7 @@ export default async function PublicoLayout({ children }: { children: ReactNode 
   const usuario = await obtenerSesion();
   const enVivo = serieEnVivo();
   return (
-    <CascaraPublica usuario={usuario} 
+    <CascaraPublica usuario={usuario}
       hayEnVivo={enVivo !== null}
       rutaEnVivo={enVivo ? rutas.serie(enVivo.competenciaId, enVivo.id) : null}
     >

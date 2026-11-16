@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { CategoryTag, StatusBadge } from '@/components/ds';
 import { listarCompetencias, type CompetenciaVista } from '@/datos';
+import { sinTildes } from '@/datos/texto';
 import { rutas } from '@/lib/rutas';
 import { armarUrl, Vacio } from './Bloques';
 import estilos from './federacion.module.css';
@@ -15,12 +16,12 @@ const FILTROS: { valor: CompetenciaVista['estado'] | undefined; clave?: string; 
 export function ListaCompetencias({ estado, texto }: { estado?: string; texto?: string }) {
   const todas = listarCompetencias();
   const filtro = FILTROS.find((f) => f.clave === estado)?.valor;
-  const buscado = (texto ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const buscado = sinTildes(texto ?? '');
   const visibles = todas.filter(
     (c) =>
       (!filtro || c.estado === filtro) &&
       (!buscado ||
-        `${c.nombre} ${c.sede}`.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().includes(buscado)),
+        sinTildes(`${c.nombre} ${c.sede}`).includes(buscado)),
   );
 
   return (
@@ -39,7 +40,7 @@ export function ListaCompetencias({ estado, texto }: { estado?: string; texto?: 
 
       <section aria-label="Competencias" className={`${estilos.tarjeta} ${estilos.tarjetaTabla}`}>
         {visibles.length === 0 ? (
-          <Vacio>No hay competencias con este estado.</Vacio>
+          <Vacio>{buscado ? 'No hay competencias que coincidan con la búsqueda.' : 'No hay competencias con este estado.'}</Vacio>
         ) : (
           <>
             <div className={`${estilos.encabezadoTabla} ${estilos.tablaCompetencias}`} aria-hidden="true">

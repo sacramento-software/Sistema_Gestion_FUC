@@ -5,12 +5,12 @@ import { Tarjeta } from '@/components/vistas/federacion-resto/Bloques';
 import estilos from '@/components/vistas/federacion-resto/federacion-resto.module.css';
 import { BarraGestion } from '@/components/vistas/comun/BarraGestion';
 import { listarEquipoFederacion } from '@/datos';
+import { sinTildes } from '@/datos/texto';
 import { rutas } from '@/lib/rutas';
 
 const ROL_PRIMERO = 'Juez central';
 
 const primero = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? '';
-const normalizar = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 export default async function JuecesPage({
   searchParams,
@@ -22,7 +22,7 @@ export default async function JuecesPage({
   const rolPedido = primero(parametros.rol);
   const todo = listarEquipoFederacion();
   const equipo = todo.filter(
-    (m) => (!rolPedido || m.rol === rolPedido) && (!q || normalizar(m.nombre).includes(normalizar(q))),
+    (m) => (!rolPedido || m.rol === rolPedido) && (!q || sinTildes(m.nombre).includes(sinTildes(q))),
   );
 
   // Agrupado por rol, con el juez central primero y el resto en el orden de los datos.
