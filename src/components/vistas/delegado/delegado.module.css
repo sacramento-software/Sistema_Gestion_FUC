@@ -1,0 +1,461 @@
+/* Estilos de las vistas del delegado (spec 6). Mobile primero. */
+
+.pagina {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.etiqueta {
+  font: 500 12px/1.2 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-texto-sec);
+}
+
+.subtexto {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--color-texto-sec);
+}
+
+.tarjeta {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-tarjeta);
+}
+
+.cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px 20px;
+}
+
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 16px 20px;
+}
+
+.titulo {
+  margin: 0;
+  font: 700 24px/1.15 var(--font-titulo);
+  overflow-wrap: anywhere;
+}
+
+.tituloMenor {
+  margin: 0;
+  font: 700 20px/1.2 var(--font-titulo);
+}
+
+.fila2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.parrafo {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-texto-cuerpo);
+}
+
+/* Cuenta regresiva destacada */
+.cuenta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radio-control);
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  font: 600 18px/1.25 var(--font-mono);
+}
+
+/* Cajas de aviso */
+.aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid color-mix(in srgb, var(--color-peligro) 30%, transparent);
+  border-radius: var(--radio-tarjeta);
+  background: var(--color-peligro-bg);
+  color: var(--color-peligro-texto);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.avisoIcono {
+  flex: none;
+  margin-top: 1px;
+  color: var(--color-peligro);
+}
+
+.avisoTextos {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.enlace {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-weight: 600;
+  color: var(--color-enlace);
+}
+
+/* Chips de ficha médica */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font: 600 12px/20px var(--font-mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.chipVigente {
+  background: var(--color-exito-bg);
+  color: var(--color-exito);
+}
+.chipVencida {
+  background: var(--color-peligro-bg);
+  color: var(--color-peligro);
+}
+.chipTramite {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+/* Listas simples */
+.lista {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.itemLista {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--color-linea-suave);
+}
+
+.itemTextos {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.nombre {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.apagado {
+  color: var(--color-texto-sec);
+  font-weight: 400;
+}
+
+.iconoCategoria {
+  display: inline-flex;
+  vertical-align: middle;
+  color: var(--color-peligro);
+}
+
+/* Barra segmentada */
+.segmentos {
+  display: flex;
+  gap: 6px;
+}
+.segmento {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-linea);
+}
+.segmentoLleno {
+  background: var(--color-accion);
+}
+
+.contador {
+  font: 600 20px/1 var(--font-mono);
+}
+
+/* Lugar del bote */
+.lugar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-control);
+  background: var(--color-superficie);
+}
+.lugarLibre {
+  justify-content: center;
+  min-height: 64px;
+  border-style: dashed;
+  color: var(--color-texto-sec);
+  background: transparent;
+}
+
+.nota {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-peligro-texto);
+}
+
+.pie {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+/* D3 */
+.d3 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.eventos {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eventoLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 56px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--color-linea-suave);
+  border-left: 3px solid transparent;
+  color: var(--color-texto);
+  text-decoration: none;
+}
+.eventoLink:hover {
+  background: var(--color-superficie-2);
+  color: var(--color-texto);
+}
+.eventoActivo,
+.eventoActivo:hover {
+  border-left-color: var(--color-accion);
+  background: var(--color-superficie-2);
+  font-weight: 700;
+}
+.eventoFila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* En el celular la lista de eventos es una lista desplegable acotada. */
+.listaEventosScroll {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.columnasD3 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.botes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  padding: 0 20px 20px;
+}
+
+.bote {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-control);
+  background: var(--color-superficie);
+}
+
+.tripulante {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 10px;
+}
+
+.vacio {
+  margin: 0;
+  padding: 0 20px 20px;
+  font-size: 15px;
+  color: var(--color-texto-sec);
+}
+
+/* Deportistas: tabla y tarjetas */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.buscador {
+  display: flex;
+  flex: 1 1 280px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.campoBusqueda {
+  display: flex;
+  flex: 1 1 200px;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.etiquetaCampo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.campo {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  font-family: var(--font-cuerpo);
+  font-size: 16px;
+  color: var(--color-texto);
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde-campo);
+  border-radius: var(--radio-control);
+}
+
+.chipsFiltro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chipFiltro {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--color-linea);
+  border-radius: 999px;
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  font-size: 15px;
+  text-decoration: none;
+}
+.chipFiltro:hover {
+  background: var(--color-superficie-2);
+  color: var(--color-texto);
+}
+.chipFiltroActivo,
+.chipFiltroActivo:hover {
+  border-color: var(--color-accion);
+  background: var(--color-accion);
+  color: var(--color-accion-texto);
+  font-weight: 600;
+}
+
+.filaDeportista {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--color-linea-suave);
+  border-left: 3px solid transparent;
+}
+.filaVencida {
+  border-left-color: var(--color-peligro);
+  background: color-mix(in srgb, var(--color-peligro-bg) 55%, transparent);
+}
+
+.encabezadoTabla {
+  display: none;
+}
+
+.celdaMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  font-size: 14px;
+  color: var(--color-texto-sec);
+}
+
+.celdaAccion {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 900px) {
+  .d3 {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+  .listaEventosScroll {
+    max-height: none;
+    overflow-y: visible;
+  }
+  .columnasD3 {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+  .botes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .encabezadoTabla,
+  .filaDeportista {
+    grid-template-columns: minmax(0, 2fr) 110px 100px 70px minmax(0, 1.6fr) 56px;
+    align-items: center;
+    gap: 8px 12px;
+  }
+  .encabezadoTabla {
+    display: grid;
+    padding: 10px 20px;
+    border-top: 1px solid var(--color-linea);
+    font: 500 12px/1 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-texto-sec);
+  }
+}
