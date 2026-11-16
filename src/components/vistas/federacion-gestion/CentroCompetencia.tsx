@@ -61,7 +61,7 @@ function Programa({ eventos }: { eventos: EventoVista[] }) {
   return (
     <>
       <div>
-        <AccionNoDisponible variant="secundario" icon={Plus}>
+        <AccionNoDisponible icon={Plus}>
           Agregar evento del catálogo
         </AccionNoDisponible>
       </div>

@@ -536,7 +536,7 @@ a.filaTabla:hover {
     grid-template-columns: minmax(0, 2fr) minmax(0, 2.4fr) minmax(0, 1.2fr) 110px 56px;
   }
 
-  /* Prueba de estilo en el catálogo: encabezado en Barlow Condensed, más negrita y más aire. */
+  /* Prueba de estilo en el catálogo: encabezado en la tipografía de los títulos, en negrita y con más aire. */
   .tablaCatalogo {
     column-gap: 32px;
     padding-left: 28px;
@@ -545,8 +545,8 @@ a.filaTabla:hover {
   .encabezadoTabla.tablaCatalogo {
     padding-top: 22px;
     padding-bottom: 22px;
-    font: 700 16px/1 var(--font-deportiva);
-    letter-spacing: 0.14em;
+    font: 700 15px/1 var(--font-titulo);
+    letter-spacing: 0.12em;
   }
   .filaTabla.tablaCatalogo {
     min-height: 76px;
@@ -577,4 +577,8 @@ a.filaTabla:hover {
   .metrica:hover {
     transform: none;
   }
+}
+
+.filaTabla:hover {
+  background: var(--color-fila-hover);
 }

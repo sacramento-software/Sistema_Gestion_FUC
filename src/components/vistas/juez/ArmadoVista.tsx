@@ -52,7 +52,7 @@ export function ArmadoVista({ eventos, armado, serie }: Props) {
   const totalDisponibles = disponibles.reduce((n, g) => n + g.botes.length, 0);
   const conInscriptos = inscriptos.length > 0;
   const crearSerie = (
-    <AccionNoDisponible variant="secundario" icon={Plus}>
+    <AccionNoDisponible icon={Plus}>
       Crear serie
     </AccionNoDisponible>
   );

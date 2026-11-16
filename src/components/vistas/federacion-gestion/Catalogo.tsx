@@ -120,10 +120,10 @@ export function Catalogo({ filtros }: { filtros: FiltrosCatalogo }) {
         ) : (
           <>
             <div className={`${estilos.encabezadoTabla} ${estilos.tablaCatalogo}`} aria-hidden="true">
-              <span>Código</span>
-              <span>Evento</span>
-              <span>Usos</span>
-              <span>Estado</span>
+              <span>CÓDIGO</span>
+              <span>EVENTO</span>
+              <span>USOS</span>
+              <span>ESTADO</span>
               <span />
             </div>
             {visibles.map((e) => (
